@@ -1,0 +1,60 @@
+<section id="CID_SECTION_PLAYFOOTER" class="player-audio-min player-attribute general unique-footer-player" music-player-style="style1" 
+        [class.bottomMargin]="platform.is('ios')">
+    <div class="audiojs song swipeout-content" classname="audiojs" id="audiojs_wrapper0">
+        <div class="audio-player-bg">
+            <div class="tabs-animated-wrapp">
+                <div class="tabs">
+                    <div id="tab98" class="tab active">
+                        <div class="big-player-queue-container">
+                            <div class="scrubber-command scrubber-options">
+                                <div *ngIf="audioService.playingTrack()" class="scrubber">
+                                    <!-- <div class="progress" [style.width]="audioService.progressPercentage()+'%'"></div> -->
+                                    <div class="progress" [style.width]="audioService.progressPercentage()+'%'"></div>
+
+
+<!--                         <ion-range min="0" max="100" [ngModel]="audioService.progressPercentage()" [disabled]="isActive" 
+                                (ionChange)="m_bLiving ? changeSeeker($event) : return" >
+                        </ion-range>
+ -->
+
+                                    <div class="loaded" style="width: 100%;"></div>
+                                </div>
+                                <div class="audio-player-content" style="background-color: black; opacity: 0.9">
+                                    <div class="mini-player">
+                                        <div class="main-grids safe-area">
+                                            <div class="player-song-info music-player-song" (click)="musicPlayerPageService.simpleOpenMusicPlayer()">
+                                                <div class="avatar-author">
+                                                    <img class="avatar photo" src="{{audioService.playingTrack() ? audioService.playingTrack().art : ''}}"
+                                                            width="100%" height="auto" />
+                                                </div>
+                                                <div class="title-author">
+                                                    <h2 class="title">
+                                                            {{ audioService.playingTrack() ? audioService.playingTrack().title : '' }}
+                                                    </h2>
+                                                    <cite class="author">
+                                                            {{ audioService.playingTrack() ? audioService.playingTrack().artists : '' }}
+                                                    </cite>
+                                                </div>
+                                            </div>
+                                            <div class="player-song-control" *ngIf="audioService.playingTrack()">
+                                                <div class="player-command">
+                                                    <button class="mini-prev prev" (click)="OnPlayPrevious()"></button>
+                                                    <div class="play-pause">
+                                                        <p *ngIf="!audioService.playingTrack().isPlaying" class="play" (click)="OnPlayPause()"></p>
+                                                        <p *ngIf="audioService.playingTrack().isPlaying" class="pause" (click)="OnPlayPause()"></p>
+                                                    </div>
+                                                    <button class="mini-next next" (click)="OnPlayNext()"></button>
+                                                </div>
+                                            </div>
+                                        <div class="error-message"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

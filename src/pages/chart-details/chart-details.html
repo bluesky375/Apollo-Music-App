@@ -1,0 +1,167 @@
+<ion-content>
+  <mini-video-player></mini-video-player>
+
+  <div
+    id="charts-1"
+    data-page="charts"
+    class="page nope charts charts-1 special-scroll page-on-center"
+  >
+    <div class="album-cover-blur">
+      <img
+        src="{{ chart.pictureUrl }}"
+        class="album cover"
+        alt="cover"
+        width="100%"
+        height="100%"
+      />
+    </div>
+
+    <section
+      class="headers"
+      header-type="back"
+      header-style="style3"
+      header-icon-style="user"
+    >
+      <header>
+        <div class="main-grids safe-area">
+          <div class="inner">
+            <a class="link back"
+              ><button
+                (click)="modalService.dismiss()"
+                class="back-icon animated"
+                data-fx="fadeInLeft"
+              ></button
+            ></a>
+
+            <div class="album-cover">
+              <img
+                src="{{ chart.pictureUrl }}"
+                class="album cover"
+                alt="cover"
+                width="100%"
+                height="100%"
+              />
+            </div>
+
+            <div class="title-author">
+              <h2 class="title">{{ chart.name }}</h2>
+            </div>
+          </div>
+        </div>
+      </header>
+    </section>
+
+    <div class="scrollable-content " style="opacity: 1;">
+      <div class="bottom-padding special-scroll-tab active">
+        <section class="big-player-queue-container">
+          <div
+            class="container-album-cover big-player animated"
+            data-fx="fadeInDown"
+          >
+            <div class="main-grids grid-cover">
+              <div class="album-cover">
+                <img
+                  src="{{ chart.pictureUrl }}"
+                  class="album cover"
+                  alt="cover"
+                  width="100%"
+                  height="100%"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="title-author animated" data-fx="fadeInUp">
+            <h2 class="title">{{ chart.name }}</h2>
+            <p class="followers">
+              <span>{{ chart.followersCount }}</span
+              ><span> Followers</span>
+            </p>
+          </div>
+
+          <button class="following">follow</button>
+          <button class="play-all play">Play All</button>
+        </section>
+
+        <section
+          class="list-songs playlist-song checkPlaylist"
+          avatar="show"
+          author="show"
+          song-time="hide"
+          song-price="show"
+          like-number="hide"
+          add-to="hide"
+          delete-track="hide"
+          ranking="show"
+          track-charts="show"
+          like-heart="hide"
+          like-heart-style="style1"
+          like-number-style="style1"
+        >
+          <div class="main-grids safe-area">
+            <div class="inner">
+              <div class="slide" *ngFor="let song of chartSongs; let i = index">
+                <div class="author-like-wrapper">
+                  <p
+                    class="rank music-player-song"
+                    (click)="musicPlayerPageService.openMusicPlayer(chartSongs, i)"
+                  >
+                    {{ song.rank }}
+                  </p>
+
+                  <div
+                    class="author-avatar music-player-song"
+                    (click)="musicPlayerPageService.openMusicPlayer(chartSongs, i)"
+                  >
+                    <img
+                      alt="Author"
+                      src="{{ song.pictureUrl }}"
+                      width="100%"
+                      height="auto"
+                    />
+                  </div>
+
+                  <div class="author-like">
+                    <div
+                      class="song-title-author music-player-song"
+                      (click)="musicPlayerPageService.openMusicPlayer(chartSongs, i)"
+                    >
+                      <h2 class="title">{{ song.name }}</h2>
+                      <cite class="author"
+                        ><a>{{ song.artistName }}</a></cite
+                      >
+                    </div>
+
+                    <div class="song-info-options-container">
+                      <span
+                        class="track-charts music-player-song"
+                        (click)="musicPlayerPageService.openMusicPlayer(chartSongs, i)"
+                        [class.icon-up]="song.rankMovement == 0"
+                        [class.icon-down]="song.rankMovement == 1"
+                        [class.icon-still]="song.rankMovement == 2"
+                      >
+                        <span class="icon"></span>
+                      </span>
+
+                      <span
+                        class="song-price purchase-page"
+                        (click)="buySong(song)"
+                        ><b>$ {{ song.price }}</b></span
+                      >
+                    </div>
+                  </div>
+
+                  <div class="divider"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer> <player-footer></player-footer>
+  <offline-footer></offline-footer>
+</ion-footer>

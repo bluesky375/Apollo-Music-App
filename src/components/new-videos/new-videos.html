@@ -1,0 +1,67 @@
+<section
+  class="section-titles"
+  section-type="standard"
+  see-all-style="style1"
+  section-icon-style="video_2_white"
+  section-title-style="left"
+>
+  <header>
+    <div class="main-grids safe-area">
+      <div class="inner">
+        <div class="icon"></div>
+
+        <h2>New Videos</h2>
+
+        <div class="see-all">
+          <p><a (click)="seeall()">See All</a></p>
+        </div>
+      </div>
+    </div>
+  </header>
+</section>
+
+<section class="vertical-playlist-video">
+  <div class="main-grids safe-area">
+    <div class="inner">
+      <div
+        *ngFor="let video of newVideos"
+        class="the-video"
+        typevideo="video/youtube"
+        (click)="videoDetailsPageService.openVideo(video)"
+      >
+        <div class="video-container">
+          <div class="video-avatar" style=" border-radius: 0px !important;">
+            <img
+              alt="avatar"
+              src="{{ video.imageURL || 'assets/imgs/album.jpg' }}"
+              class="avatar"
+              style="width: 150px; height: 150px; border-radius: 0px !important;"
+            />
+
+            <div class="video-time-label">
+              <div class="blur"></div>
+              <p class="video-time">{{ video?.duration || '00:00' }}</p>
+            </div>
+          </div>
+
+          <div class="video-info">
+            <h2 class="title">{{ video.title }}</h2>
+
+            <cite class="author">{{ video.oartist }}</cite>
+
+            <p class="video-views">
+              <svg width="17" height="14" viewBox="0 0 17 14">
+                <path
+                  fill="#FFF"
+                  fill-rule="evenodd"
+                  d="M8.502 13.29c5.294 0 8.32-5.667 8.32-6.611 0-.945-3.026-6.611-8.32-6.611-5.295 0-8.32 5.666-8.32 6.61 0 .945 3.025 6.612 8.32 6.612zm0-3.584a3.025 3.025 0 1 0 0-6.05 3.025 3.025 0 0 0 0 6.05z"
+                  opacity=".42"
+                ></path></svg>{{ video?.views }}
+            </p>
+          </div>
+        </div>
+        <br><br><br>
+      </div>
+    </div>
+  </div>
+</section>

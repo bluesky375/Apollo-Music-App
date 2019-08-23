@@ -1,0 +1,201 @@
+<section class="player-audio-min player-attribute general alwaysblock big big-active" music-player-style="style2">
+    <!-- Background blur -->
+    <div class="album-cover-blur">
+        <img src="{{ audioService.playingTrack().pictureUrl }}" class="album cover" alt="cover" style="width: 250px; height: 200px;" />
+    </div>
+    <div class="audiojs swipeout-content">
+        <div class="audio-player-bg">
+            <div class="playlist-header big-player">
+                <section class="headers" header-type="music-player" header-style="style2" header-title-style="left">
+                    <!-- Header -->
+                    <header>
+                        <div class="main-grids safe-area">
+                            <div class="inner">
+                                <button class="minimize" (click)="isActive ? doNotheing() : modalService.dismiss()"></button>
+                                <h6 style=" position: relative; width: 72%; margin: 0; display: inline-block; overflow: hidden;
+                                        text-overflow: ellipsis; white-space: nowrap; font-weight: 500; letter-spacing: .4px;
+                                        color: #fff;">Now Playing</h6>
+                                <button style="display: inline; background: white; border-radius: 50%; width: 38px; height: 38px; max-width: 38px;
+                                        position: absolute; top: 2px; right: 130px;" *ngIf="accountType === 'premium' ">
+                                    <i class="fa fa-download" aria-hidden="true" style="color:black; font-size: 1.4em;" 
+                                            (click)="download()" *ngIf="!isActive" >
+                                    </i>
+                                </button>
+                                <button style="display: inline; background: white; border-radius: 50%; width: 38px; height: 38px; max-width: 38px;
+                                        position: absolute; top: 2px; right: 88px;">
+                                    <i class="fa fa-heart-o" 
+                                            *ngIf="!musicPlayerPageService.m_Tracks[musicPlayerPageService.m_nTrackIndex].bLike && !isActive" aria-hidden="true" style="color:black; font-size: 1.4em;" (click)="likeSong('like')">
+                                    </i>
+                                    <i class="fa fa-heart" 
+                                            *ngIf="musicPlayerPageService.m_Tracks[musicPlayerPageService.m_nTrackIndex].bLike && !isActive" aria-hidden="true" style="color:#00ACFF; font-size: 1.4em;" (click)="likeSong('dislike')" >
+                                    </i>
+                                </button>
+                                <button (click)="isActive ? doNotheing : share()" class="share-icon"></button>
+                                <button (click)="isActive ? doNotheing() : options()" class="options-icon options-page"></button>
+                            </div>
+                        </div>
+                    </header>
+                </section>
+            </div>
+            <div class="big-player-queue-container">
+                <!-- Album cover -->
+                <div class="container-album-cover big-player">
+                    <div class="main-grids grid-cover" align="center">
+                        <div class="album-cover">
+                            <!-- <img src="{{ audioService.playingTrack() ? audioService.playingTrack().art : 'assets/imgs/album.jpg' }}" -->
+                            <img src="{{ m_bAlive ? audioService.playingTrack().art : 'assets/imgs/album.jpg' }}" align="center"
+                                    alt="cover" style="width:250px; height:200px; align-content:center;  auto !important;" />
+                        </div>
+                    </div>
+                </div>
+                <div class="scrubber-command scrubber-options open">
+                    <div *ngIf="audioService.playingTrack()" class="scrubber">
+                        <!-- <div
+                        class="progress"
+                        [style.width]="audioService.progressPercentage() + '%'"
+                        ></div>
+                        <div class="loaded" style="width: 100%;"></div> -->
+                        <ion-range min="0" max="100" [ngModel]="audioService.progressPercentage()" [disabled]="!audioService.playingTrack().isPlaying" 
+                                (ionChange)="audioService.playingTrack().isPlaying ? changeSeeker($event) : return" >
+                        </ion-range>
+                    </div>
+                    <br><br>
+                    <!-- <ion-item></ion-item> -->
+                    <div class="audio-player-content">
+                        <div class="big-player big-player-content">
+                            <div class="main-grids safe-area">
+                                <div class="inner">
+                                    <!-- Duration -->
+                                    <div class="time">
+                                        <em class="played">{{ audioService.progressText() }}</em>
+                                        <strong class="duration">{{ audioService.durationText() }}</strong>
+                                    </div>
+                                    <!-- Name and artist -->
+                                    <div class="title-author">
+                                        <h2 class="title">{{ audioService.playingTrack() ? audioService.playingTrack().title : '' }}</h2>
+                                        <br />
+                                        <cite class="author" avatar="11sz2" album-cover="11sz6">
+                                                 {{ audioService.playingTrack() ? audioService.playingTrack().artists : '' }}
+                                        </cite>
+                                    </div>
+                                    <div class="player-command">
+                                        <div class="list">
+                                            <i class="fa fa-repeat" aria-hidden="true" style="color:white; font-size: 1.8em; 
+                                                    position: relative; top: 15px;"  
+                                                    (click)="musicPlayerPageService.m_bProgressChanged ? 
+                                                    musicPlayerPageService.SetRepeat() : return" 
+                                                    [ngStyle]="{'color': musicPlayerPageService.m_bRepeat ? '#00ACFF' : 'white' }">
+                                            </i>  
+                                        </div>
+                                        <div class="command">
+                                            <!-- <p class="prev" (click)="isActive ? doNotheing() : previous()" style="margin-top: -1px"></p> -->
+                                            <p class="prev" (click)="musicPlayerPageService.m_bProgressChanged ? OnPlayPrevious() : doNotheing()" 
+                                                    style="margin-top: -1px">
+                                            </p>
+                                            <p class="playPause play" [class.active]="audioService.playingTrack().isPlaying ? 
+                                                (musicPlayerPageService.m_bAdvertisePlaying ? false : true) : false" 
+                                                (click)="m_bAlive ? OnPlayPause() : doNotheing()">
+                                            </p>
+                                            <p class="next" (click)="musicPlayerPageService.m_bProgressChanged ? OnPlayNext() : doNotheing()" 
+                                                style="margin-top: -1px">
+                                            </p>
+                                        </div>
+                                        <div class="heart-audio">
+                                            <div class="heart" [class.active]="audioService.playingTrack() ? 
+                                                    audioService.playingTrack().isLiked : false">
+                                                <div class="icon">
+                                                    <i class="fa fa-random" aria-hidden="true" style="color:white" style="color:white; 
+                                                            font-size: 1.8em; position: relative; top: 15px;"  
+                                                            (click)="musicPlayerPageService.m_bProgressChanged ? 
+                                                            musicPlayerPageService.SetShuffle() : return" 
+                                                            [ngStyle]="{'color': musicPlayerPageService.m_bShuffle ? '#00ACFF' : 'white' }">
+                                                    </i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="min-height: 400px" class="up-next-option">
+                                <section class="section-titles" section-type="up-next" up-next-style="style2">
+                                    <header>
+                                        <div class="main-grids safe-area">
+                                            <div class="inner" style="margin-top: 30px">
+                                                <h2>Up Next</h2>
+                                                <div class="shuffle-repeat-wrapper">
+                                                    <button class="shuffle shuffle-icon" [class.active]="musicPlayerPageService.m_bShuffle"></button>
+                                                    <button class="repeat active repeat-icon" [class.active]="musicPlayerPageService.m_bRepeat"></button>
+                                                    <button class="shuffle-repeat-bt" (click)="musicPlayerPageService.SetShuffle()">
+                                                        <div class="blur"></div>
+                                                        <p class="shuffle-repeat-text text-shuffle">Random</p>
+                                                        <p class=" shuffle-repeat-text text-repeat">Repeat</p>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </header>
+                                </section>
+                                <section class="list-songs playlist-song checkPlaylist" like-heart-style="style2">
+                                    <div class="main-grids safe-area">
+                                        <div class="inner"> 
+                                            <div *ngFor="let song of musicPlayerPageService.upNextSongs; let i = index" class="slide"
+                                                    (click)="changeSong(song)">
+                                                <div class="author-like-wrapper">
+                                                    <div class="author-avatar">
+                                                        <img src="{{ song.imageURL || 'assets/imgs/album.jpg' }}" style="width: 250px; height: 200px;"/>
+                                                    </div>
+                                                    <div class="author-like">
+                                                        <div class="song-title-author">
+                                                            <h2 class="title">{{ song.title }}</h2>
+                                                            <cite class="author">
+                                                                <a>{{ song?.artist[0]?.display }} </a>
+                                                            </cite>
+                                                        </div>
+                                                        <div class="song-info-options-container">
+                                                            <div class="like-container">
+                                                                <span class="heart-icon" [class.active]="song.isLiked">
+                                                                    <svg width="16px" height="15px" viewBox="0 0 16 15">
+                                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                            <g transform="translate(1.000000, 1.000000)">
+                                                                                <g transform="translate(-2.000000, -3.000000)">
+                                                                                    <rect x="0" y="0" width="18" height="18"></rect>
+                                                                                    <path d="M9,5.70689931 C9.71495864,3.78248227 10.8248268,3 12.0625,
+                                                                                            3 C14.2373039,3 16,4.97331321 16,7.40764925 C16,12.4491242 9,15.3414179 9,15.3414179 C9,15.3414179 2,12.4491242 2,7.40764925 C2,4.97331321 3.76269608,3 5.9375,3 C7.1751732,3 8.38818359,3.78248227 9,5.70689931 Z" 
+                                                                                            id="shapes" stroke="#FFFFFF" stroke-width="1.7">
+                                                                                    </path>
+                                                                                </g>
+                                                                            </g>
+                                                                        </g>
+                                                                    </svg>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="divider"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- end audio-player-bg -->
+    </div>
+    <!-- end audiojs song -->
+</section>
+
+<!-- 
+<div class="container-album-cover big-player">
+    <div class="main-grids grid-cover">
+        <div class="album-cover">
+            <img src="{{ audioService.playingTrack() ? audioService.playingTrack().art : 'assets/imgs/album.jpg' }}" 
+                    class="album cover" alt="cover" style="width: 250px; height: 200px; margin: 0 auto !important;" />
+        </div>
+    </div>
+</div>      
+-->

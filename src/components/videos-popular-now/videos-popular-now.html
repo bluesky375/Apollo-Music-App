@@ -1,0 +1,83 @@
+<section
+  class="section-titles"
+  section-type="standard"
+  see-all-style="style1"
+  section-icon-style="best_white"
+  section-title-style="left"
+>
+  <header>
+    <div class="main-grids safe-area">
+      <div class="inner">
+        <div class="icon"></div>
+
+        <h2>Popular Now</h2>
+
+        <div class="see-all">
+          <p><a>See All</a></p>
+        </div>
+      </div>
+    </div>
+  </header>
+</section>
+
+<section class="section-videos-most-viewed">
+  <div
+    class="swiper-container swiper-padding-left videos-mini-thumb no-fastclick swiper-container-horizontal"
+  >
+    <div class="swiper-wrapper">
+      <a>
+        <div class="first-slide">
+          <div class="gradient"></div>
+
+          <div class="swiper-slide">
+            <div class="slide">
+              <div class="img-play">
+                <p>Play All</p>
+                <button class="video"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <div
+        *ngFor="let videoPair of videoPairs"
+        class="other-slide swiper-slide swiper-slide-active"
+        style="width: 98px; margin-right: 9px;"
+      >
+        <div
+          class="swiper-slide"
+          (click)="videoDetailsPageService.openVideo(videoPair.video1)"
+        >
+          <div class="slide">
+            <img
+              src="{{ videoPair.video1.pictureUrl }}"
+              style="width: 150px; height: 150px;"
+            />
+
+            <h2>{{ videoPair.video1.name }}</h2>
+
+            <cite class="author">{{ videoPair.video1.artistName }}</cite>
+          </div>
+        </div>
+
+        <div
+          class="swiper-slide"
+          (click)="videoDetailsPageService.openVideo(videoPair.video2)"
+        >
+          <div class="slide">
+            <img
+              src="{{ videoPair.video2.pictureUrl }}"
+              width="100%"
+              height="100%"
+            />
+
+            <h2>{{ videoPair.video2.name }}</h2>
+
+            <cite class="author">{{ videoPair.video2.artistName }}</cite>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

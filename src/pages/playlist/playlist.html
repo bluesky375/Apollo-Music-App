@@ -1,0 +1,198 @@
+<ion-content>
+  <mini-video-player></mini-video-player>
+
+  <div
+    id="playlist-1"
+    data-page="playlist"
+    class="page nope playlist playlist-1 special-scroll"
+  >
+    <div class="album-cover-blur">
+      <img
+        src="{{ playlist.pictureUrl }}"
+        class="album cover"
+        alt="cover"
+        width="100%"
+        height="100%"
+      />
+    </div>
+
+    <section
+      class="headers"
+      header-type="back"
+      header-style="style3"
+      header-icon-style="user"
+    >
+      <header>
+        <div class="main-grids safe-area">
+          <div class="inner">
+            <a
+              ><button
+                class="back-icon"
+                (click)="modalService.dismiss()"
+              ></button
+            ></a>
+
+            <a><button class="icon user-icon"></button></a>
+
+            <div class="album-cover">
+              <img
+                src="{{ playlist.pictureUrl }}"
+                class="album cover"
+                alt="cover"
+                width="100%"
+                height="100%"
+              />
+            </div>
+
+            <div class="title-author">
+              <h2 class="title">{{ playlist.name }}</h2>
+            </div>
+          </div>
+        </div>
+      </header>
+    </section>
+
+    <div class="scrollable-content" style="opacity: 1">
+      <div class="bottom-padding special-scroll-tab active">
+        <section class="big-player-queue-container">
+          <div class="container-album-cover big-player">
+            <div class="main-grids grid-cover">
+              <div class="album-cover">
+                <img
+                  src="{{ playlist.pictureUrl }}"
+                  class="album cover"
+                  alt="cover"
+                  width="100%"
+                  height="100%"
+                />
+              </div>
+            </div>
+          </div>
+
+          <br />
+
+          <div class="title-author">
+            <h2 class="title">{{ playlist.name }}</h2>
+          </div>
+        </section>
+
+        <section
+          class="section-titles"
+          section-type="playlists-large"
+          section-title="hide"
+          author="hide"
+          follow="show"
+          total-min="show"
+          like-container="show"
+          year="hide"
+          song-number="show"
+          play="hide"
+        >
+          <header>
+            <div class="main-grids safe-area">
+              <div class="inner">
+                <button
+                  style="margin-left: 16px; margin-bottom: 5px;"
+                  class="following"
+                  [class.active]="playlist.following"
+                >
+                  Follow
+                </button>
+                <button style="margin-top: -10px;" class="shuffle"></button>
+
+                <div class="song-number">{{ playlist.songsCount }} Songs</div>
+                <div class="total-min">45 min</div>
+              </div>
+            </div>
+          </header>
+        </section>
+
+        <br />
+
+        <section
+          class="list-songs playlist-song checkPlaylist"
+          avatar="show"
+          author="show"
+          song-time="show"
+          song-price="hide"
+          like-number="hide"
+          add-to="hide"
+          delete-track="hide"
+          ranking="hide"
+          like-heart-style="style2"
+          like-number-style="style1"
+        >
+          <div class="main-grids safe-area">
+            <div class="inner">
+              <div class="slide" *ngFor="let song of playlistSongs; let i = index">
+                <div class="author-like-wrapper">
+                  <div
+                    class="author-avatar music-player-song"
+                    (click)="musicPlayerPageService.openMusicPlayer(playlistSongs, i)"
+                  >
+                    <img
+                      src="{{ song.pictureUrl }}"
+                      width="100%"
+                      height="auto"
+                    />
+                  </div>
+
+                  <div class="author-like">
+                    <div
+                      class="song-title-author music-player-song"
+                      (click)="musicPlayerPageService.openMusicPlayer(playlistSongs, i)"
+                    >
+                      <h2 class="title">{{ song.name }}</h2>
+                      <cite class="author"
+                        ><a>{{ song.artistName }}</a></cite
+                      >
+                    </div>
+
+                    <div class="song-info-options-container">
+                      <div class="like-container">
+                        <span class="heart-icon" [class.active]="song.isLiked"
+                          ><svg width="16px" height="15px" viewBox="0 0 16 15">
+                            <g
+                              stroke="none"
+                              stroke-width="1"
+                              fill="none"
+                              fill-rule="evenodd"
+                            >
+                              <g transform="translate(1.000000, 1.000000)">
+                                <g transform="translate(-2.000000, -3.000000)">
+                                  <rect
+                                    x="0"
+                                    y="0"
+                                    width="18"
+                                    height="18"
+                                  ></rect>
+                                  <path
+                                    d="M9,5.70689931 C9.71495864,3.78248227 10.8248268,3 12.0625,3 C14.2373039,3 16,4.97331321 16,7.40764925 C16,12.4491242 9,15.3414179 9,15.3414179 C9,15.3414179 2,12.4491242 2,7.40764925 C2,4.97331321 3.76269608,3 5.9375,3 C7.1751732,3 8.38818359,3.78248227 9,5.70689931 Z"
+                                    id="shapes"
+                                    stroke="#FFFFFF"
+                                    stroke-width="1.7"
+                                  ></path>
+                                </g>
+                              </g>
+                            </g></svg
+                        ></span>
+                      </div>
+
+                      <span class="song-time">3.20</span>
+                    </div>
+                  </div>
+
+                  <div class="divider"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer> <player-footer></player-footer>
+  <offline-footer></offline-footer>
+</ion-footer>

@@ -1,0 +1,43 @@
+<ion-content>
+  <div class="view view-main">
+    <div
+      id="videos-1"
+      data-page="videos"
+      class="page nope videos videos-1 page-on-center"
+    >
+      <!-- <div class="album-cover-blur"></div> -->
+      <div class="scrollable-content " style="opacity: 1;">
+        <div class="bottom-padding">
+          <section
+            class="headers"
+            header-type="standard"
+            header-style="style1"
+            header-icon-style="user"
+            header-title-style="left"
+          >
+            <header>
+              <div class="main-grids safe-area">
+                <div class="inner">
+                  <h2>Videos</h2>
+                  <button (click)="openSearch()" class="search-icon" essential-search="show"></button>
+                </div>
+              </div>
+            </header>
+          </section>
+
+          <videos-slider></videos-slider>
+
+          <!-- <videos-popular-now></videos-popular-now> -->
+
+          <new-videos></new-videos>
+
+          <!-- <mini-video-player></mini-video-player> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer> <player-footer></player-footer>
+  <offline-footer></offline-footer>
+</ion-footer>

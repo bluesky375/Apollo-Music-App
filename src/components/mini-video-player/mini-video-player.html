@@ -1,0 +1,55 @@
+<section class="player-video-min player-attribute general unique-mini-player" *ngIf="videoService.currentVideo">
+  <div class="videojs song" classname="videojs" width="100%" height="auto">
+    <section class="video-wrapper">
+      <div class="video-wrapper-inner">
+        <button
+          (click)="videoService.hideMiniPlayer()"
+          class="close-video active"
+        >
+          <svg width="14px" height="14px" viewBox="0 0 16 17">
+            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g transform="translate(-7.000000, -6.000000)">
+                <rect x="0" y="0" width="28" height="28"></rect>
+                <path
+                  d="M16.9953742,14.5024854 L22.3097444,9.18811519 C22.8600654,8.63779413 22.8600654,7.74554742 22.3097444,7.19522637 C21.7594233,6.64490532 20.8671766,6.64490532 20.3168556,7.19522637 L20.3168556,7.19522637 L15.0024854,12.5095966 L9.68811519,7.19522637 L9.68811519,7.19522637 C9.13779413,6.64490532 8.24554742,6.64490532 7.69522637,7.19522637 C7.14490532,7.74554742 7.14490532,8.63779413 7.69522637,9.18811519 L13.0095966,14.5024854 L7.69522637,19.8168556 C7.14490532,20.3671766 7.14490532,21.2594233 7.69522637,21.8097444 L7.69522637,21.8097444 C8.24554742,22.3600654 9.13779413,22.3600654 9.68811519,21.8097444 L9.68811519,21.8097444 L15.0024854,16.4953742 L20.3168556,21.8097444 L20.3168556,21.8097444 C20.8671766,22.3600654 21.7594233,22.3600654 22.3097444,21.8097444 L22.3097444,21.8097444 C22.8600654,21.2594233 22.8600654,20.3671766 22.3097444,19.8168556 L16.9953742,14.5024854 Z"
+                  fill="#120810"
+                ></path>
+              </g>
+            </g>
+          </svg>
+        </button>
+
+        <div
+          id="vjs_video_2902"
+          height="264"
+          width="640"
+          class="video-js vjs-tech vsg-player vjs-default-skin vjs-16-9 vjs-paused vjs_video_2902-dimensions vjs-controls-enabled vjs-v6 vjs-youtube vjs-youtube-mobile vjs-user-inactive"
+          lang="en-gb"
+          role="region"
+          aria-label="Video Player"
+        >
+          <div>
+            <iframe
+              id="vjs_video_2902_Youtube_api"
+              style="width:100%;height:100%;top:0;left:0;position:absolute"
+              class="vjs-tech"
+              frameborder="0"
+              allowfullscreen="1"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              title="YouTube video player"
+              width="640"
+              height="360"
+              [src]="
+                sanitizer.bypassSecurityTrustResourceUrl(
+                  videoService.currentVideo.videoUrl
+                )
+              "
+            ></iframe>
+          </div>
+
+          <div class="gradient-top"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>

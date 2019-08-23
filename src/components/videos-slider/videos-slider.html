@@ -1,0 +1,26 @@
+<section class="videos-swiper-container">
+  <div
+    class="swiper-container video-playlist-swiper no-fastclick swiper-container-horizontal"
+  >
+    <div class="swiper-wrapper">
+      <div
+        *ngFor="let video of videos"
+        class="swiper-slide the-video"
+        (click)="videoDetailsPageService.openVideo(video)"
+      >
+        <div class="slide">
+          <img src="{{ video.imageURL || 'assets/imgs/album.jpg' }}" style="width:237px; height: 140px;" />
+
+          <div class="video-time-label">
+            <div class="blur"></div>
+            <p class="video-time">{{ video?.duration || '00:00'}}</p>
+          </div>
+        </div>
+
+        <h2 style="font-size: 20px !important;">{{ video.title }}</h2>
+
+        <cite class="author">{{ video.oartist }}</cite>
+      </div>
+    </div>
+  </div>
+</section>

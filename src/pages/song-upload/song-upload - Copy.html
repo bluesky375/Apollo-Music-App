@@ -1,0 +1,110 @@
+ <ion-header style="background-color: #120810">
+
+  <h3 style="text-align: right; color: white; padding-right: 10px;" (click)="close()">Close</h3>
+
+</ion-header>
+
+
+<ion-content style="background-color: #120810;">
+
+  <ion-grid>
+    <form [formGroup]="form">
+    <ion-row no-padding>
+      <ion-col text-center no-padding col-1 col-sm-1 col-md-1 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+        <ion-icon name="musical-note" style="margin-top:12px;color:white;"></ion-icon>
+      </ion-col>
+      <ion-col text-center no-padding col-11 col-sm-11 col-md-11 offset-lg-3 col-lg-11 offset-xl-3 col-xl-11>
+        <ion-input type="text" placeholder="Title" formControlName="title"
+          style="border-bottom: 1px rgb(140, 133, 180) solid; color: white !important;"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row no-padding>
+      <ion-col text-center no-padding col-1 col-sm-1 col-md-1 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+        <ion-icon name="musical-note" style="margin-top:12px;color:white;"></ion-icon>
+      </ion-col>
+      <ion-col text-center no-padding col-11 col-sm-11 col-md-11 offset-lg-3 col-lg-11 offset-xl-3 col-xl-11>
+        <ion-input type="text" placeholder="Original Artist" formControlName="oartist"
+          style="border-bottom: 1px rgb(140, 133, 180) solid; color: white !important;"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row no-padding>
+      <ion-col text-center no-padding col-1 col-sm-1 col-md-1 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+        <ion-icon name="musical-note" style="margin-top:12px;color:white;"></ion-icon>
+      </ion-col>
+      <ion-col text-center no-padding col-11 col-sm-11 col-md-11 offset-lg-3 col-lg-11 offset-xl-3 col-xl-11>
+        <ion-input type="text" placeholder="Artist" formControlName="artist"
+          style="border-bottom: 1px rgb(140, 133, 180) solid; color: white !important;"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row no-padding>
+      <ion-col text-center no-padding col-1 col-sm-1 col-md-1 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+        <ion-icon name="musical-note" style="margin-top:12px;color:white;"></ion-icon>
+      </ion-col>
+      <ion-col text-center no-padding col-11 col-sm-11 col-md-11 offset-lg-3 col-lg-11 offset-xl-3 col-xl-11>
+        <ion-input type="text" placeholder="Original Movie" formControlName="movie"
+          style="border-bottom: 1px rgb(140, 133, 180) solid; color: white !important;"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row no-padding>
+      <ion-col text-center no-padding col-1 col-sm-1 col-md-1 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+        <ion-icon name="musical-note" style="margin-top:12px;color:white;"></ion-icon>
+      </ion-col>
+      <ion-col text-center no-padding col-11 col-sm-11 col-md-11 offset-lg-3 col-lg-11 offset-xl-3 col-xl-11>
+        <ion-input type="text" placeholder="Album" formControlName="album" [disabled]="type === 'album' "
+          style="border-bottom: 1px rgb(140, 133, 180) solid; color: white !important;"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row no-padding>
+      <ion-col text-center no-padding col-1 col-sm-1 col-md-1 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+        <ion-icon name="musical-note" style="margin-top:12px;color:white;"></ion-icon>
+      </ion-col>
+      <ion-col text-center no-padding col-11 col-sm-11 col-md-11 offset-lg-3 col-lg-11 offset-xl-3 col-xl-11>
+        <ion-select style="border-bottom: 1px rgb(140, 133, 180) solid; color: white !important; width: 100%;" formControlName="mood">
+          <ion-option value="happy" selected>Happy</ion-option>
+          <ion-option value="sad">Sad</ion-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+    <ion-row no-padding>
+      <ion-col text-center no-padding col-1 col-sm-1 col-md-1 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+        <ion-icon name="musical-note" style="margin-top:12px;color:white;"></ion-icon>
+      </ion-col>
+      <ion-col text-center no-padding col-11 col-sm-11 col-md-11 offset-lg-3 col-lg-11 offset-xl-3 col-xl-11>
+        <ion-input type="text" placeholder="Video Link" formControlName="video"
+          style="border-bottom: 1px rgb(140, 133, 180) solid; color: white !important;"></ion-input>
+      </ion-col>
+      <small style="color: white;">&nbsp;&nbsp;e.g https://www.youtube.com/embed/xyzabc</small>
+    </ion-row>
+    <br>
+    <ion-row no-padding>
+      <ion-col col-6>
+        <button ion-button color="dark" style="width: 100%;" (click)="choosePicture()" >Select Thumbnail</button>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-button color="dark" style="width: 100%;" (click)="openFile()">Select Song</button>
+      </ion-col>
+    </ion-row>
+    <br>
+    <ion-row>
+      <ion-col col-6 *ngIf="base64Image">
+        <img src="{{base64Image}}" style="width: 150px; height: auto;" >
+      </ion-col>
+      <ion-col col-6 *ngIf="songname">
+        <h6 style="color: white;">{{songname}}</h6>
+      </ion-col>
+    </ion-row>
+    <br>
+    <!-- [disabled]="form.pristine || form.invalid" -->
+          <ion-row no-padding>
+            <ion-col no-padding col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+              <button ion-button block class="continue-btn" type="button" (click)="submit(form)" 
+                style="border-color: white; color: white;">
+                Upload
+              </button>
+            </ion-col>
+          </ion-row>
+        </form>
+
+  </ion-grid>
+
+</ion-content>

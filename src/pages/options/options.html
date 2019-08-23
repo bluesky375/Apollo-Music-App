@@ -1,0 +1,68 @@
+<div class="options-container-overlay fromBottomToTop music-player-option open">
+  <section class="headers" header-type="standard" header-style="style5">
+    <header>
+      <div class="main-grids safe-area">
+        <div class="inner">
+          <div class="album-cover">
+            <img
+              src="{{ audioService.playingTrack()?.art || image}}"
+              class="album cover"
+              alt="cover"
+              width="100%"
+              height="100%"
+            />
+          </div>
+          <div class="title-author">
+            <h2 class="title">{{ audioService.playingTrack()?.title || name}}</h2>
+            <cite class="author" avatar="2sz2" album-cover="2sz5">{{
+              audioService.playingTrack()?.artists || artist
+            }}</cite>
+          </div>
+        </div>
+      </div>
+    </header>
+  </section>
+
+  <div class="music-player-option-container" style="min-width: 300px;top:55%">
+    <div class="inner">
+      <p>Add to (Playlist)</p>
+      <div class="divider"></div>
+      <ul class="add-to">
+        <!-- <li>Your Library</li> -->
+        <!-- <li (click)="addToPlaylist()" >Playlist</li> -->
+        <li *ngFor="let item of myplaylist?.playlist; let i = index" (click)="addToExistingPlaylist(item,i)" style="font-size:19px;margin-top:11px; margin-bottom:11px" >{{item?.name}}</li>
+        <li (click)="createNew()" >Create New</li>
+        <!-- <li>Up Next</li> -->
+      </ul>
+
+      <br />
+
+      <!-- <p>Go to</p> -->
+
+      <!-- <div class="divider"></div> -->
+
+      <!-- <ul class="go-to"> -->
+        <!-- <li class="album-details-page" (click)="goToAlbum()">Full Album</li> -->
+        <!-- <li class="artist-details-page" (click)="goToArtist()">Artist Profile</li> -->
+      <!-- </ul> -->
+    </div>
+  </div>
+
+  <div class="music-player-option-back">
+    <div class="main-grids safe-area">
+      <button class="back" (click)="modalService.dismiss()">
+        <svg width="13px" height="13px" viewBox="0 0 16 17">
+          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g transform="translate(-7.000000, -6.000000)">
+              <rect x="0" y="0" width="28" height="28"></rect>
+              <path
+                d="M16.9953742,14.5024854 L22.3097444,9.18811519 C22.8600654,8.63779413 22.8600654,7.74554742 22.3097444,7.19522637 C21.7594233,6.64490532 20.8671766,6.64490532 20.3168556,7.19522637 L20.3168556,7.19522637 L15.0024854,12.5095966 L9.68811519,7.19522637 L9.68811519,7.19522637 C9.13779413,6.64490532 8.24554742,6.64490532 7.69522637,7.19522637 C7.14490532,7.74554742 7.14490532,8.63779413 7.69522637,9.18811519 L13.0095966,14.5024854 L7.69522637,19.8168556 C7.14490532,20.3671766 7.14490532,21.2594233 7.69522637,21.8097444 L7.69522637,21.8097444 C8.24554742,22.3600654 9.13779413,22.3600654 9.68811519,21.8097444 L9.68811519,21.8097444 L15.0024854,16.4953742 L20.3168556,21.8097444 L20.3168556,21.8097444 C20.8671766,22.3600654 21.7594233,22.3600654 22.3097444,21.8097444 L22.3097444,21.8097444 C22.8600654,21.2594233 22.8600654,20.3671766 22.3097444,19.8168556 L16.9953742,14.5024854 Z"
+                fill="#120810"
+              ></path>
+            </g>
+          </g>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>

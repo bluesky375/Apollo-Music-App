@@ -1,0 +1,61 @@
+<div class="options-container-overlay player-attribute fromBottomToTop music-player-share open">
+    <section class="share-section-title">
+        <h2>Share</h2>
+    </section>
+    <section class="headers" header-type="standard" header-style="style5">
+        <header>
+            <div class="main-grids safe-area">
+                <div class="inner">
+                    <div class="album-cover">
+                        <img src="{{ audioService.playingTrack().art }}" class="album cover" alt="cover" width="100%" height="100%"/>
+                    </div>
+                    <div class="title-author">
+                        <h2 class="title">{{ audioService.playingTrack().title }}</h2>
+                        <cite class="author">{{ audioService.playingTrack().artist }}</cite>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </section>
+    <section class="share-button-container">
+        <div class="main-grids safe-area">
+            <div class="inner option-container">
+                <button class="share-button share-whatsapp" (click)="whatsapp()" >WhatsApp</button>
+                <button class="share-button share-message" (click)="message()">Message</button>
+                <button class="share-button share-facebook" (click)="facebook()">Facebook</button>
+                <button class="share-button share-twitter" (click)="twitter()" >Twitter</button>
+                <button class="share-button share-email" (click)="email()" >Email</button>
+            <!-- <button class="share-button share-copylink">Copy Link</button> -->
+
+            <!-- <button class="share-button share-other">
+            <svg width="5px" height="21px" viewBox="0 0 4 18">
+            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g transform="translate(-12.000000, -5.000000)">
+            <rect id="frame" x="0" y="0" width="28" height="28"></rect>
+            <path
+            d="M14,9 C12.8954305,9 12,8.1045695 12,7 C12,5.8954305 12.8954305,5 14,5 C15.1045695,5 16,5.8954305 16,7 C16,8.1045695 15.1045695,9 14,9 Z M14,16 C12.8954305,16 12,15.1045695 12,14 C12,12.8954305 12.8954305,12 14,12 C15.1045695,12 16,12.8954305 16,14 C16,15.1045695 15.1045695,16 14,16 Z M14,23 C12.8954305,23 12,22.1045695 12,21 C12,19.8954305 12.8954305,19 14,19 C15.1045695,19 16,19.8954305 16,21 C16,22.1045695 15.1045695,23 14,23 Z"
+            fill="#FFF"
+            ></path>
+            </g>
+            </g></svg
+            >Other
+            </button> -->
+            </div>
+        </div>
+    </section>
+    <div class="share-back">
+        <div class="main-grids safe-area">
+            <button class="back" (click)="modalService.dismiss()">
+                <svg width="13px" height="13px" viewBox="0 0 16 17">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g transform="translate(-7.000000, -6.000000)">
+                            <rect x="0" y="0" width="28" height="28"></rect>
+                            <path d="M16.9953742,14.5024854 L22.3097444,9.18811519 C22.8600654,8.63779413 22.8600654,7.74554742 22.3097444,7.19522637 C21.7594233,6.64490532 20.8671766,6.64490532 20.3168556,7.19522637 L20.3168556,7.19522637 L15.0024854,12.5095966 L9.68811519,7.19522637 L9.68811519,7.19522637 C9.13779413,6.64490532 8.24554742,6.64490532 7.69522637,7.19522637 C7.14490532,7.74554742 7.14490532,8.63779413 7.69522637,9.18811519 L13.0095966,14.5024854 L7.69522637,19.8168556 C7.14490532,20.3671766 7.14490532,21.2594233 7.69522637,21.8097444 L7.69522637,21.8097444 C8.24554742,22.3600654 9.13779413,22.3600654 9.68811519,21.8097444 L9.68811519,21.8097444 L15.0024854,16.4953742 L20.3168556,21.8097444 L20.3168556,21.8097444 C20.8671766,22.3600654 21.7594233,22.3600654 22.3097444,21.8097444 L22.3097444,21.8097444 C22.8600654,21.2594233 22.8600654,20.3671766 22.3097444,19.8168556 L16.9953742,14.5024854 Z" fill="#120810">
+                            </path>
+                        </g>
+                    </g>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>

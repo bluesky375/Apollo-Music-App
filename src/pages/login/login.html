@@ -1,0 +1,93 @@
+<ion-content style="background-color: #120810;">
+    <div class="login-page" style="width: 100%; background-color: #120810; ">
+        <h1 class="headerLogin"><img src="assets/logo1.png" style="width: 90px; height: 90px;" ></h1>
+        <br><br>
+        <ion-row padding style="position:relative; top:10px">
+            <ion-col text-center no-padding col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+                <p style="font-size:13px; color:white;">Login to Continue</p>
+            </ion-col>
+        </ion-row>
+        <br><br><br>
+        <form [formGroup]="form">
+            <ion-row no-padding>
+                <ion-col text-center no-padding col-1 col-sm-1 col-md-1 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6></ion-col>
+                <ion-col text-center no-padding col-10 col-sm-11 col-md-11 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+                    <ion-input type="email" placeholder="Email address" formControlName="email"
+                            style="margin-bottom: 20px; margin-left: auto; margin-right: auto; padding-left:10px;padding-left:10px; 
+                                border-radius: 7px; border-bottom: 1px white solid; width:65%;bottom: 13px; 
+                                background-color: white !important; color:black; position: relative;">
+                    </ion-input>
+                </ion-col>
+                <ion-col text-center no-padding col-1 col-sm-1 col-md-1 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6></ion-col>
+            </ion-row>
+            <ion-row no-padding>
+                <ion-col text-center no-padding col-1 col-sm-1 col-md-1 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6></ion-col>
+                <ion-col text-center no-padding col-10 col-sm-11 col-md-11 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+                    <ion-input type="password" placeholder="Password" formControlName="password"
+                            style="margin-bottom: 20px; margin-left: auto; margin-right: auto; padding-left:10px; padding-right:10px;  
+                                border-radius: 7px; border-bottom: 1px white solid; width:65%;bottom: 13px; 
+                                background-color: white !important; color:black; position: relative;">
+                    </ion-input>
+                </ion-col>
+                <ion-col text-center no-padding col-1 col-sm-1 col-md-1 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6></ion-col>
+            </ion-row>
+            <ion-row no-padding>
+                <ion-col text-center no-padding col-1 col-sm-1 col-md-1 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6></ion-col>
+                <ion-col text-center no-padding col-10 col-sm-11 col-md-11 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+                    <button ion-button block (click)="signinCustomer(form)" [disabled]="form.pristine || form.invalid"
+                            style="background-color: white; margin-left: auto; margin-right: auto; border: 0px solid white; height: 45px; 
+                            border-radius: 7px; width: 65%;">
+                        <!-- <ion-icon class="signUpIcon" name="md-person-add"></ion-icon> -->
+                        <p class="signUp" style="color:black; font-family:Arial; font-size: 15px;">Login</p>
+                    </button>
+                </ion-col>
+                <ion-col text-center no-padding col-1 col-sm-1 col-md-1 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6></ion-col>
+            </ion-row>
+        </form>
+        <h5 text-center style="color: white">OR</h5>
+        <ion-row no-padding>
+            <ion-col text-center no-padding col-1 col-sm-1 col-md-1 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6></ion-col>
+            <ion-col text-center no-padding col-10 col-sm-11 col-md-11 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+                <button text-center ion-button outline block (click)="loginByFacebook()" style="border-radius: 10px;
+                        background-color: white; margin-left: auto; margin-right: auto; border: 0px solid white; height: 45px; 
+                        border-radius: 7px; width: 65%;">
+                    <!-- <ion-icon class="signUpIcon" name="md-person-add"></ion-icon> -->
+                    <ion-icon class=" fbIcon" name="logo-facebook" style="color:blue; font-size: 1.5em;"></ion-icon>
+                    <p class="loginWithFacebook" style="font-family:Arial; font-size: 13px; color:white; ">
+                        Sign in with Facebook</p>
+                </button>
+            </ion-col>
+            <ion-col text-center no-padding col-1 col-sm-1 col-md-1 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6></ion-col>
+        </ion-row>
+
+
+<!--         <ion-row>
+            <ion-col text-center no-padding size="12" >
+                <button text-center ion-button outline block class="fbButton" (click)="loginByFacebook()" style="border-radius: 10px; 
+                        position: relative; left: 25%; width: 50%;">
+                    <ion-icon class=" fbIcon" name="logo-facebook" style="color:blue; font-size: 1.5em;"></ion-icon>
+                    <p class="loginWithFacebook" style="font-family:Arial; font-size: 13px; color:white; ">
+                        Sign in with Facebook</p>
+                </button>
+            </ion-col>
+        </ion-row> -->
+        <br><br>
+            <!-- <ion-row>
+            <ion-col text-center no-padding col-9 col-sm-10 col-md-9 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+            <button text-center ion-button outline block class="fbButton" (click)="nativeGoogleLogin()">
+            <ion-icon class=" fbIcon" name="logo-google" style="color:red; font-size: 1.5em;"></ion-icon>
+            <p class="loginWithFacebook" style="font-family:Arial; font-size: 13px; color:white;">
+            Sign in with Google</p>
+            </button>
+            </ion-col>
+            </ion-row> -->
+        <br><br>
+        <ion-row padding style="position:relative;">
+            <ion-col text-center no-padding col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+                <p style="position:relative; bottom: 30px; color: white; text-align: center">Don't have an account? 
+                    <a style="color:rgb(221, 224, 192)" (tap)="signup()">Signup</a>
+                </p>
+            </ion-col>
+        </ion-row>
+    </div>
+</ion-content>

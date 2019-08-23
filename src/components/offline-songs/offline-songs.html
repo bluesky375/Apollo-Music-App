@@ -1,0 +1,53 @@
+<section
+  class="section-titles"
+  section-type="standard"
+  see-all-style="style2"
+  section-icon-style="playlists_white"
+  section-title-style="left"
+  *ngIf="offline"
+>
+  <header>
+    <div class="main-grids safe-area">
+      <div class="inner">
+        <div class="icon"></div>
+
+        <h2 >Offline Songs</h2>
+        <div class="see-all">
+          <p><a></a></p>
+        </div>
+      </div>
+    </div>
+  </header>
+</section>
+
+<ion-grid>
+  <ion-row>
+    <ion-col col-12>
+        <ion-slides slidesPerView="2">
+
+            <ion-slide  *ngFor="let item of offline; let i = index"  slide-style="style1" [ngStyle]="{'margin-left': i>0 ? '10px' : '0px'}"
+              (click)="openOfflineMusicPlayer(offline, i)"
+              >
+                <div class="slide">
+                    <div class="img-inner-wrapper">
+                      <img
+                        src="{{item.imageURL || 'assets/imgs/album.jpg'}}"
+                        
+                        style="border-radius: 9px; width: 150px; height: 150px;"
+                      />
+          
+                      <h2 style="color: white">{{ item?.name}}</h2>
+          
+                      <cite class="author">
+                        <a style="color: rgb(189, 189, 189) !important; text-decoration: none; font-style: normal;">{{ item?.oartist }}</a>
+                      </cite>
+                    </div>
+                  </div>
+            </ion-slide>
+          
+          
+          </ion-slides>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+

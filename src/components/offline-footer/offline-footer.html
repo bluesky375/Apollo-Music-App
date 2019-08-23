@@ -1,0 +1,96 @@
+<section
+  class="player-audio-min player-attribute general offline-footer-player"
+  music-player-style="style1" [class.bottomMargin]="platform.is('ios')"
+>
+  <div
+    class="audiojs song swipeout-content"
+    classname="audiojs"
+    id="audiojs_wrapper0"
+  >
+    <div class="audio-player-bg">
+      <div class="tabs-animated-wrapp">
+        <div class="tabs">
+          <div id="tab98" class="tab active">
+            <div class="big-player-queue-container">
+              <div class="scrubber-command scrubber-options">
+                <div *ngIf="player?.songPlaying" class="scrubber">
+                  <div class="progress" [style.width]="progress+'%'"></div>
+                  <div class="loaded" style="width: 100%;"></div>
+                </div>
+
+                <div
+                  class="audio-player-content"
+                  style="background-color: black; opacity: 0.9"
+                >
+                  <div class="mini-player">
+                    <div class="main-grids safe-area">
+                      <div
+                        class="player-song-info music-player-song"
+                        (click)="player.openMediaPlayer()"
+                      >
+                        <div class="avatar-author">
+                          <img
+                            class="avatar photo"
+                            src="{{
+                              player.exist ? player.getCurrentTrack().imageURL : 'assets/imgs/album.jpg'
+                            }}"
+                            width="100%"
+                            height="auto"
+                          />
+                        </div>
+
+                        <div class="title-author">
+                          <h2 class="title">
+                            {{
+                              player.exist ? player.getCurrentTrack().title : ''
+                            }}
+                          </h2>
+
+                          <cite class="author">{{
+                            player.exist ? player.getCurrentTrack().oartist : ''
+                          }}</cite>
+                        </div>
+                      </div>
+
+                      <div
+                        class="player-song-control"
+                        *ngIf="player.exist">
+                        <div class="player-command" style="margin-left:-40px;">
+                          <button
+                            class="mini-prev prev"
+                            (click)="player.previous()"
+                          ></button>
+
+                          <div class="play-pause">
+                            <p
+                              *ngIf="!player.songPlaying"
+                              class="play"
+                              (click)="player.play()"
+                            ></p>
+
+                            <p
+                              *ngIf="player.songPlaying"
+                              class="pause"
+                              (click)="player.pause()"
+                            ></p>
+                          </div>
+
+                          <button
+                            class="mini-next next"
+                            (click)="player.next()"
+                          ></button>
+                        </div>
+                      </div>
+
+                      <div class="error-message"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

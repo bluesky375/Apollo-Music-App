@@ -1,0 +1,35 @@
+<ion-menu [content]="content" type="overlay">
+
+  <ion-content>
+    <div
+    
+    style="background: black; height: 100%; width: 100%; position: absolute; top: 0px;">
+    <br>
+    <img *ngIf="user" src="{{user?.imageURL || 'assets/images/library/profile picture.jpg'}}" style="width: 50px; height: 50px; display: block; border-radius: 50%; margin: 0 auto;">
+    <h6 *ngIf="user" style="color: white; padding-left: 5%; word-wrap: break-word; text-align: center;">Hello, {{user?.name}}</h6>
+
+    <hr style="color: white; width: 80%;">
+
+    <br> <br> <br> <br>
+
+    <h6 style="padding-left: 20px; color: white;" (click)="liked()"><ion-icon name="heart"></ion-icon><span style="margin-left: 10%;">My Favourites</span></h6>
+    <br>
+    <h6 style="padding-left: 20px; color: white;" (click)="playlist()"><ion-icon name="heart"></ion-icon><span style="margin-left: 10%;">My Playlists</span></h6>
+    <br>
+    <h6 style="padding-left: 20px; color: white;" (click)="offline()"><ion-icon name="musical-note"></ion-icon><span style="margin-left: 13%;">My Downloads</span></h6>
+    <br>
+    <h6 style="padding-left: 20px; color: white;" (click)="buy()"><ion-icon name="card"></ion-icon><span style="margin-left: 10%;">Buy Premium</span></h6>
+    <br>
+    <h6 style="padding-left: 20px; color: white;" (click)="resetPassword()"><ion-icon name="create"></ion-icon><span style="margin-left: 10%;">Reset Password</span></h6>
+    <br>
+    <h6 style="padding-left: 20px; color: white;" (click)="logout()"><ion-icon name="log-out"></ion-icon><span style="margin-left: 10%;">Log out</span></h6>
+
+
+    </div>
+
+  </ion-content>
+
+</ion-menu>
+<script></script>
+
+<ion-nav [root]="rootPage" #content></ion-nav>

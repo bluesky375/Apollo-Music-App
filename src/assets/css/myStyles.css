@@ -1,0 +1,56 @@
+.login-page   .headerLogin{
+    color: white !important;
+    text-align: center !important;
+}
+
+.loginWithFacebook {
+margin-right: 10px;
+}
+.fbIcon{
+    margin-right: 10px;
+    color: blue;
+}
+.fbButton{
+    background-color: #faf9fc !important;
+    border-color: #465892 !important;
+    position: relative;
+    left: 15%;
+}
+.fbButton:hover{
+    background-color: white !important;
+    border-color: white !important;
+
+}
+.loginWithFacebook{
+    color: black !important;
+}
+.header-div{
+    background-color: #120810;
+}
+
+.header-div > ion-navbar{
+    background-color: #120810;
+}
+
+.segmentText{
+    margin-top: 0.5em;
+    color: white;
+}
+
+.round{
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+}
+.notround{
+    max-width: 100px; max-height: 100px; position: relative; top: 15px
+}
+
+.range-knob-handle{
+    display: none;
+}
+@media (min-width: 350px) and (max-width: 375px){
+    .mini-next .next{
+        float: right !important;
+    }
+}

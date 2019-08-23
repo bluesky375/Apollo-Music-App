@@ -1,0 +1,50 @@
+<section
+  class="section-titles"
+  section-type="standard"
+  see-all-style="style1"
+  section-icon-style="favourites"
+  section-title-style="left"
+>
+  <header>
+    <div class="main-grids safe-area">
+      <div class="inner">
+        <div class="icon"></div>
+        <h2>For You</h2>
+        <div class="see-all">
+          <p><a (click)="seeall()">See All</a></p>
+        </div>
+      </div>
+    </div>
+  </header>
+</section>
+
+<div style="width: 100% !important;">
+<ion-grid >
+  <ion-row>
+    <ion-col col-12>
+        <ion-slides slidesPerView="2">
+
+            <ion-slide  *ngFor="let item of songs; let i = index"  slide-style="style1" [ngStyle]="{'margin-left': i>0 ? '10px' : '0px'}"
+                (click)="musicPlayerPageService.openMusicPlayer(songs, i)">
+                <div class="slide">
+                    <div class="img-inner-wrapper">
+                      <img
+                        src="{{item?.imageURL || 'assets/imgs/album.jpg' }}"
+                        style="height: 150px; width: 150px;"
+                      />
+
+                      <h2 style="color: white; font-size: 18px !important;" >{{ item?.title}}</h2>
+
+                      <cite class="author">
+                        <a style="color: rgb(189, 189, 189) !important; text-decoration: none; font-style: normal;">{{ item?.oartist }}</a>
+                      </cite>
+                    </div>
+                  </div>
+            </ion-slide>
+
+
+          </ion-slides>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</div>

@@ -1,0 +1,39 @@
+<ion-content style="background-color: black">
+  <div
+    class="options-container-overlay purchase-popup-overlay payment-method-overlay open"
+  >
+    <section
+      class="headers"
+      header-type="back"
+      header-style="style3"
+      header-icon-style="user"
+    >
+      <header>
+        <div class="main-grids safe-area">
+          <div class="inner">
+            <button class="minimize" (click)="close()"></button>
+            <h2>Payment Method</h2>
+          </div>
+        </div>
+      </header>
+    </section>
+
+    <div style="width: 100%;position: relative; top: 15%;">
+      <h5 style="color: white; text-align: center;" (click)="addCoupon()">Have a Coupon?</h5>
+    </div>
+
+    <div style="width: 100%; height: 100%; position: relative; top: 30%;">
+      <h2 style="color: white;" (click)="makepurchase()"><i class="fab fa-google-play" style="    font-size: 1.4em;
+        position: relative;
+        top: 30px;"></i>Google Play</h2>
+         <h2 style="color: white;" (click)="paypalPurchase()"><i class="fab fa-paypal" style="    font-size: 1.4em;
+          position: relative;
+          top: 30px;"></i>PayPal</h2>
+    </div>
+
+  </div>
+</ion-content>
+<ion-footer style="background-color: #120810;">
+  <h4 style="text-align: center; color: white;     position: relative;
+  top: -40px;"><b>$ {{ amount || 0 }}</b></h4>
+</ion-footer>

@@ -1,0 +1,95 @@
+<ion-content style="background-color: #120810; z-index: 1111111111; width: 100% !important; height: 100% !important;">
+    <div style="width: 100%;">
+      <h5 style="color: white; text-align:  center;">Account Information</h5>
+      <h5 style="text-align: center; position: relative; top: -10px;"><small style="color: white;">About You.</small></h5>
+    </div>
+    <br>
+    <br>
+      <ion-grid>
+        <form [formGroup]="form">
+          <ion-row no-padding>
+          <!-- <ion-col text-center no-padding col-1 col-sm-1 col-md-1 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+            <ion-icon name="people" style="margin-top:12px;color:white;"></ion-icon>
+          </ion-col> -->
+          <ion-col text-center no-padding size="12">
+            <ion-input type="text" placeholder="Username" formControlName="username" (ionChange)="checkUsername($event)" #username
+            style="position: relative; left: 0.5%; margin-bottom: 20px; margin-left: auto; margin-right: auto; border-radius: 7px !important; padding-left: 15px; color: black !important; background-color: white; width: 76% !important;"></ion-input>
+          </ion-col>
+
+          <ion-row>
+
+            <ion-col text-center col-12 offset-xl-3  offset-lg-3>
+              <small style="color: red !important; padding-left: 70px;" *ngIf="usernameError">{{error}}</small>
+              <small style="color: red !important; padding-left: 70px;" *ngIf="f.username.errors && username.value.length > 0" >Invalid Username</small>
+            </ion-col>
+          </ion-row>
+        </ion-row>
+
+        <ion-row no-padding>
+
+          <ion-col text-center no-padding size="12">
+            <ion-icon name="calendar" style="margin-top:8px;color:grey;position: fixed; left: 15%; z-index: 2; font-size: 26px;"></ion-icon>
+            <ion-datetime displayFormat="DD/MM/YYYY" formControlName="dob"
+            style="z-index: 1; margin-bottom: 20px; margin-left: auto; text-align: left; margin-right: auto; border-radius: 7px !important; padding-left: 40px;  color: black !important; background-color: white; width: 75% !important;" max="2019-12-01"
+              placeholder="Date of Birth"></ion-datetime>
+
+          </ion-col>
+
+        </ion-row>
+
+        <ion-row no-padding>
+          <!-- <ion-col text-center no-padding col-1 col-sm-1 col-md-1 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+            <ion-icon name="home" style="margin-top:12px;color:white;"></ion-icon>
+          </ion-col> -->
+          <ion-col text-center no-padding size="12">
+            <ion-input type="text" placeholder="City" formControlName="city"
+            style="margin-bottom: 20px; margin-left: auto; margin-right: auto; border-radius: 7px !important; padding-left: 15px; color: black !important; background-color: white; width: 75% !important;"></ion-input>
+          </ion-col>
+
+        </ion-row>
+
+        <ion-row no-padding>
+          <!-- <ion-col text-center no-padding col-1 col-sm-1 col-md-1 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+            <ion-icon name="call" style="margin-top:12px;color:white;"></ion-icon>
+          </ion-col> -->
+          <ion-col text-center no-padding size="12">
+            <ion-input type="text" placeholder="Mobile No." formControlName="mobile"
+              style="margin-bottom: 20px; margin-left: auto; margin-right: auto; border-radius: 7px !important; padding-left: 15px; color: black !important; background-color: white; width: 75% !important;"></ion-input>
+          </ion-col>
+
+        </ion-row>
+                <br>
+                <ion-row no-padding>
+                  <ion-col text-center no-padding col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+                    <ion-list radio-group formControlName="gender">
+
+
+                      <ion-item style="background-color: #120810 !important;">
+                        <ion-label style="color: white;">
+                          <ion-icon name="male" style="margin-top:12px;color:white; width: 60%; margin-left: auto; margin-right: auto;"></ion-icon>&nbsp;Male
+                        </ion-label>
+                        <ion-radio checked="true" value="male"></ion-radio>
+                      </ion-item>
+
+                      <ion-item style="background-color: #120810 !important;">
+                        <ion-label style="color:white;">
+                          <ion-icon name="male" style="margin-top:12px;color:white; width: 60%; margin-left: auto; margin-right: auto;"></ion-icon>&nbsp;Female
+                        </ion-label>
+                        <ion-radio value="female"></ion-radio>
+                      </ion-item>
+                    </ion-list>
+                  </ion-col>
+                </ion-row>
+                <br>
+                <ion-row no-padding>
+                  <ion-col no-padding col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+                    <button ion-button block class="continue-btn" type="button" (click)="submit(form)" [disabled]="form.pristine || form.invalid"
+                      style="border-color: white; color: white; height: 40px; border-radius: 5%; width: 65%; margin-left: auto; margin-right: auto;">
+                      Continue
+                    </button>
+                  </ion-col>
+                </ion-row>
+        </form>
+      </ion-grid>
+
+    </ion-content>

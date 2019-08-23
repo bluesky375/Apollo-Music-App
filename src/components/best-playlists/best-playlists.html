@@ -1,0 +1,58 @@
+<!-- <section
+*ngIf="!isLibrary"
+class="section-titles"
+section-type="standard"
+see-all-style="style1"
+section-icon-style="playlists"
+section-title-style="left"
+>
+<header>
+<div class="main-grids safe-area">
+<div class="inner">
+<div class="icon"></div>
+
+<h2>The Best Playlists</h2>
+
+<div class="see-all">
+<p><a>See All</a></p>
+</div>
+</div>
+</div>
+</header>
+</section> -->
+
+<section *ngIf="playlist" class="section-titles" section-type="standard" see-all-style="style2" 
+        section-icon-style="playlists_white" section-title-style="left">
+    <header>
+        <div class="main-grids safe-area">
+            <div class="inner">
+                <div class="icon"></div>
+                <h2 >Own Playlists</h2>
+                    <div class="see-all">
+                        <p><a></a></p>
+                    </div>
+                </div>
+            </div>
+    </header>
+</section>
+<ion-grid *ngIf="playlist">
+    <ion-row>
+        <ion-col col-12>
+            <ion-slides slidesPerView="{{m_nSlidesPerView}}">
+                <ion-slide  *ngFor="let item of playlist.playlist; let i = index"  slide-style="style1" 
+                        [ngStyle]="{'margin-left': i>0 ? '10px' : '0px'}" (click)="openSeeAllPage(item,i)">
+                    <div class="slide">
+                        <div class="img-inner-wrapper">
+                            <img src="{{ m_bAlive ? images[i] : 'assets/imgs/album.jpg'}}" style="width: 120px; height: 120px;" />
+                            <h2 style="color: white; font-size: 18px !important;">{{ item?.name}}</h2>
+                            <!-- <cite class="author">
+                            <a style="color: rgb(189, 189, 189) !important; text-decoration: none; font-style: normal;">{{ item?.oartist }}</a>
+                            </cite> -->
+                        </div>
+                    </div>
+                </ion-slide>
+            </ion-slides>
+        </ion-col>
+    </ion-row>
+</ion-grid>
+

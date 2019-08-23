@@ -1,0 +1,48 @@
+<section
+  class="section-titles"
+  section-type="standard"
+  see-all-style="style1"
+  section-icon-style="best"
+  section-title-style="left"
+>
+  <header>
+    <div class="main-grids safe-area">
+      <div class="inner">
+        <div class="icon"></div>
+        <h2>Charts</h2>
+        <div class="see-all">
+          <p><a>See All</a></p>
+        </div>
+      </div>
+    </div>
+  </header>
+</section>
+
+<section class="charts-swiper-container checkPlaylist">
+  <div
+    class="swiper-container swiper-padding-left square-swiper playlist-swiper charts-swiper-container no-fastclick"
+  >
+    <div class="swiper-wrapper">
+      <div
+        *ngFor="let chart of charts"
+        class="swiper-slide chart-details-page"
+        (click)="openChart(chart)"
+      >
+        <div class="slide">
+          <a>
+            <div class="img-play">
+              <img src="{{ chart.pictureUrl }}" width="100%" height="auto" />
+            </div>
+          </a>
+        </div>
+
+        <h2>{{ chart.name }}</h2>
+
+        <cite class="author"></cite>
+        <p class="playlist-followers">{{ chart.followersCount }} Followers</p>
+      </div>
+
+      <div class="swiper-slide"></div>
+    </div>
+  </div>
+</section>

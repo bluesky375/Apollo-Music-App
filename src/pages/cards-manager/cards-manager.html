@@ -1,0 +1,124 @@
+<ion-content style="background-color: black">
+  <div
+    class="options-container-overlay fromBottomToTop purchase-popup-overlay manage-card-overlay open"
+  >
+    <div
+      class="scroll-container"
+      style="height: 100%; overflow: auto; -webkit-overflow-scrolling: touch;"
+    >
+      <div class="scroll-inner" style="min-height: 101%">
+        <section class="header-manage-card">
+          <div class="main-grids safe-area">
+            <div class="inner">
+              <div class="header-manage-card-title">
+                <span>Your Cards</span>
+                <div class="total-cards">{{ cardsService.cards.length }}</div>
+              </div>
+
+              <button (click)="addNewCard()" class="add-new">
+                <svg width="15px" height="15px" viewBox="0 0 17 19">
+                  <g
+                    stroke="none"
+                    stroke-width="1"
+                    fill="none"
+                    fill-rule="evenodd"
+                  >
+                    <g transform="translate(-6.000000, -5.000000)">
+                      <rect x="0" y="0" width="28" height="28"></rect>
+                      <g
+                        transform="translate(6.000000, 5.000000)"
+                        fill="#1F111C"
+                      >
+                        <path
+                          d="M6.85256371,6.51839399 L6.85256371,1.62385381 L6.85256371,1.62385381 C6.85256371,0.727024115 7.57958783,-5.73000848e-17 8.47641752,-2.22044605e-16 L8.47641752,-3.31820075e-16 L8.47641752,-2.22044605e-16 C9.37324722,-3.86789125e-16 10.1002713,0.727024115 10.1002713,1.62385381 L10.1002713,6.51839399 L10.1002713,6.51839399 C10.1002713,7.07067874 10.5479866,7.51839399 11.1002713,7.51839399 L15.3787624,7.51839399 L15.3787624,7.51839399 C16.2741472,7.51839399 17,8.24424681 17,9.13963164 L17,9.13963164 L17,9.13963164 C17,10.0350165 16.2741472,10.7608693 15.3787624,10.7608693 L11.1002713,10.7608693 L11.1002713,10.7608693 C10.5479866,10.7608693 10.1002713,11.2085845 10.1002713,11.7608693 L10.1002713,16.6838385 L10.1002713,16.6838385 C10.1002713,17.5806682 9.37324722,18.3076923 8.47641752,18.3076923 L8.47641752,18.3076923 L8.47641752,18.3076923 C7.57958783,18.3076923 6.85256371,17.5806682 6.85256371,16.6838385 L6.85256371,11.7608693 L6.85256371,11.7608693 C6.85256371,11.2085845 6.40484846,10.7608693 5.85256371,10.7608693 L1.62123765,10.7608693 L1.62123765,10.7608693 C0.72585282,10.7608693 1.09653017e-16,10.0350165 0,9.13963164 L0,9.13963164 L0,9.13963164 C-1.09653017e-16,8.24424681 0.72585282,7.51839399 1.62123765,7.51839399 L5.85256371,7.51839399 L5.85256371,7.51839399 C6.40484846,7.51839399 6.85256371,7.07067874 6.85256371,6.51839399 Z"
+                        ></path>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </button>
+
+              <p>
+                Edit, remove or add a new card.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="total-cards-vertical">
+          <div class="main-grids safe-area">
+            <div class="inner">
+              <div
+                class="card-container my-card unique-card2"
+                [attr.card-type]="card.type === 'mastercard' ? 'mastercard' : (card.type === 'visa' ? 'visa': (card.type === 'amex' ? 'amex' : (card.type === 'discover' ? 'discover' : (card.type === 'dankort' ? 'dankort' : ''))))"
+                *ngFor="let card of cardsService.cards"
+              >
+                <div (click)="editingExistingCard(card)" class="card-edit">Edit</div>
+
+                <div (click)="deleteCard(card)" class="card-erase">
+                  <svg width="28" height="28" viewBox="0 0 28 28">
+                    <g
+                      fill="#FFF"
+                      fill-rule="evenodd"
+                      transform="translate(4 4)"
+                    >
+                      <path
+                        d="M2 3h16v13a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V3zm4 4a1 1 0 0 1 1 1v8a1 1 0 0 1-2 0V8a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v8a1 1 0 0 1-2 0V8a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v8a1 1 0 0 1-2 0V8a1 1 0 0 1 1-1z"
+                      ></path>
+                      <path
+                        d="M8 0h4a3 3 0 0 1 3 3v1H5V3a3 3 0 0 1 3-3z"
+                      ></path>
+                      <rect width="20" height="2" y="3" rx="1"></rect>
+                    </g>
+                  </svg>
+                </div>
+
+                <div class="card-logo"></div>
+
+                <div class="card-input-contain">
+                  <ion-row style="height: 100%" align-items-center>
+                    <ion-col text-center>
+                      <div>
+                        <span
+                          style="font-size: 22px; font-weight: 500; letter-spacing: .5px; color: #fff"
+                          >**** **** **** </span
+                        ><b
+                          style="font-size: 22px; font-weight: 500; letter-spacing: .5px; color: #fff"
+                          class="last-numbers-card"
+                          >{{ card.lastDigits }}</b
+                        >
+                      </div>
+                    </ion-col>
+                  </ion-row>
+
+                  <div class="input name-card">
+                    <p>Holder</p>
+                    <div>{{ card.holder }}</div>
+                  </div>
+
+                  <div class="input exp-date">
+                    <p>Expires</p>
+                    <div>{{ card.expiryMonth }} / {{ card.expiryYear }}</div>
+                  </div>
+
+                  <div class="input cvv" style="min-width: 50px;">
+                    <p>Cvv</p>
+                    <div>{{ card.CCV }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="confirm-purchase-popup-back">
+      <div class="main-grids safe-area">
+        <button (click)="modalService.dismiss()" class="back card-selection-page">Cancel</button>
+      </div>
+    </div>
+
+    <div class="gradient"></div>
+  </div>
+</ion-content>

@@ -1,0 +1,82 @@
+<ion-content style="background-color: black">
+  <div
+    class="options-container-overlay fromBottomToTop purchase-popup-overlay confirm-purchase-popup-overlay open"
+  >
+    <section class="purchase-popup-container" style="width: 85%;">
+      <div class="inner">
+        <p>You’re buying…</p>
+
+        <div class="title-author">
+          <img
+            alt="author"
+            src="{{ purchase?.pictureUrl }}"
+            width="100%"
+            height="auto"
+          />
+
+          <h2 class="title">{{ purchase?.name }}</h2>
+          <cite class="author">{{ purchase?.artistName }}</cite>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="final-price-container">
+          <span>for</span><b class="final-price">$ {{ purchase?.price }}</b>
+        </div>
+
+        <section class="pay-form-container-saved">
+          <div class="inner">
+            <div
+              class="type-card-wrapper"
+              *ngIf="cardType === 'mastercard'"
+              card-type="mastercard"
+            ></div>
+            <div
+              class="type-card-wrapper"
+              *ngIf="cardType === 'visa'"
+              card-type="visa"
+            ></div>
+            <div
+              class="type-card-wrapper"
+              *ngIf="cardType === 'amex'"
+              card-type="amex"
+            ></div>
+            <div
+              class="type-card-wrapper"
+              *ngIf="cardType === 'discover'"
+              card-type="discover"
+            ></div>
+            <div
+              class="type-card-wrapper"
+              *ngIf="cardType === 'dankort'"
+              card-type="dankort"
+            ></div>
+
+            <div class="number-card-wrapper">
+              <span>**** **** **** </span
+              ><b class="last-numbers-card">{{
+                cardsService.currentCard.lastDigits
+              }}</b>
+            </div>
+
+            <button
+              (click)="openCardSelection()"
+              class="edit card-selection-page"
+              style="margin-right: -16px"
+            >
+              Edit
+            </button>
+          </div>
+        </section>
+
+        <button (click)="modalService.dismiss()" class="confirm">Confirm</button>
+      </div>
+    </section>
+
+    <div class="confirm-purchase-popup-back">
+      <div class="main-grids safe-area">
+        <button style="opacity: 1" (click)="modalService.dismiss()" class="back">Cancel</button>
+      </div>
+    </div>
+  </div>
+</ion-content>

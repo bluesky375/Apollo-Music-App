@@ -1,0 +1,48 @@
+<section
+*ngIf="albums"
+  class="section-titles"
+  section-type="standard"
+  see-all-style="style2"
+  section-icon-style="playlists_white"
+  section-title-style="left"
+>
+  <header>
+    <div class="main-grids safe-area">
+      <div class="inner">
+        <div class="icon"></div>
+
+        <h2 >My Albums</h2>
+        <div class="see-all">
+          <p><a></a></p>
+        </div>
+      </div>
+    </div>
+  </header>
+</section>
+
+<ion-grid >
+    <ion-row>
+      <ion-col col-12>
+          <ion-slides  slidesPerView="2">
+
+              <ion-slide  *ngFor="let item of albums; let i = index"  slide-style="style1" [ngStyle]="{'margin-left': i>0 ? '10px' : '0px'}"
+                  (click)="openSeeAllPage(item,i)">
+                  <div class="slide">
+                      <div class="img-inner-wrapper">
+                        <img
+                          src="{{item.imageURL}}"
+                          style="border-radius: 9px; width: 150px; height: 150px;"
+                        />
+
+                        <h2 style="color: white; font-size: 18px !important;">{{ item?.name}}</h2>
+
+                      </div>
+                    </div>
+              </ion-slide>
+
+
+            </ion-slides>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+

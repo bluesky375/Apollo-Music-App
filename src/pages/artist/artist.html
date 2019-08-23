@@ -1,0 +1,148 @@
+<ion-content>
+    <mini-video-player></mini-video-player>
+    <div id="artist-profile-1" data-page="artist-profile" class="page nope artist-profile artist-profile-1 special-scroll page-on-center">
+        <div class="album-cover-blur">
+            <img src="{{ artist?.imageURL || 'assets/imgs/user.png'}}" class="album cover" alt="cover" width="100%" height="100%"/>
+        </div>
+        <section class="headers" header-type="back" header-style="style3" header-icon-style="user">
+            <header>
+                <div class="main-grids safe-area">
+                    <div class="inner">
+                        <a class="link back">
+                            <button (click)="GotoHome()" class="back-icon"></button>
+                        </a>
+                        <div class="album-cover">
+                            <img src="{{ artist?.imageURL || 'assets/imgs/user.png'}}" class="album cover" width="100%" height="100%"/>
+                        </div>
+                        <div class="title-author">
+                            <h2 class="title">{{ artist?.name }}</h2>
+                            <cite class="author">{{ artist?.followersCount }} Listeners</cite>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </section>
+        <div class="scrollable-content" style="opacity: 1">
+            <div class="bottom-padding special-scroll-tab active">
+                <section class="profile-avatar-user">
+                    <div class="main-grids safe-area">
+                        <div class="inner">
+                            <img src="{{ artist.imageURL =='' ? 'assets/images/library/profile picture.jpg' : artist.imageURL }}" 
+                                    width="100%" height="auto" />
+                            <div class="user-country">
+                                <cite class="user">{{ artist?.name }}</cite>
+                                <p class="listeners">{{ userFollowers?.users.length || '0' }} Listeners</p>
+                            </div>
+                            <button class="following active" *ngIf="type === 'user' && isFollowing" (click)="unfollow()" >
+                                following
+                            </button>
+                            <button class="following" *ngIf="type === 'user' && !isFollowing" (click)="followUser()" >
+                                follow
+                            </button>
+                        </div>
+                    </div>
+                </section>
+                <section class="section-tabs" section-type="tabs" tabs-style="style2">
+                    <div class="main-grids safe-area">
+                        <div class="buttons-row">
+                            <a href="#tab16" class="button tab-link active listen">Playlist</a>
+                            <a href="#tab18" class="button tab-link releated">Uploadlist</a>
+                            <a href="#tab17" class="button tab-link releated">Favourites</a>
+                        </div>
+                    </div>
+                </section>
+                <div class="tabs-animated-wrapp">
+                    <div class="tabs">
+                        <div id="tab16" class="tab active special-scroll-tab">
+                            <section class="playlist-container bottom-padding">
+                                <ion-grid *ngIf="playlist">        
+                                    <ion-row style="width: 100%; height: 50px !important;" *ngFor="let item of playlist.playlist; let i = index" 
+                                            [ngStyle]="{'margin-top': i>0 ? '15px' : '0px'}" (click)="openSeeAllPage(item,i)">
+                                        <ion-col col-3 >
+                                            <img src="{{images[i]}}" alt="" style="width: 50px; height: 50px;">
+                                        </ion-col>
+                                        <ion-col col-9>
+                                            <h6 style="color: white; position: relative; top: -10px; ">{{item?.name}}</h6>
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-grid>
+                            </section>
+                        </div>
+                        <div id="tab18" class="tab">
+                            <section class="playlist-container bottom-padding">
+                                <ion-grid *ngIf="uploadSongs" style="margin-top:-25px">
+                                    <h5 style="color: white;" *ngIf="uploadSongs.length > 0 ">Songs:
+                                        <span style="text-align: right; float: right; border-radius: 2px; background-color: #35242F; 
+                                                width: 50px; padding-right:3px;">
+                                            <small style="text-align: right;" (click)="musicPlayerPageService.openMusicPlayer(uploadSongs, 0)">
+                                                Play all
+                                            </small>
+                                        </span>
+                                    </h5>
+                                    <ion-row style="width: 100%; height: 50px !important;" *ngFor="let item of uploadSongs; let i = index" 
+                                            [ngStyle]="{'margin-top': i>0 ? '15px' : '0px'}">
+                                        <ion-col col-3 (click)="musicPlayerPageService.openMusicPlayer(uploadSongs, i)">
+                                            <img src="{{item.imageURL != '' ? item.imageURL : 'assets/imgs/album.jpg'}}" alt="" 
+                                                    style="width: 50px; height: 50px;">
+                                        </ion-col>
+                                        <ion-col col-9>
+                                            <h6 style="color: white; position: relative; top: -10px; ">{{item.title}}
+                                                <br>
+                                                <small (click)="musicPlayerPageService.openMusicPlayer(uploadSongs,i)">
+                                                    {{item.artist[0].value}}
+                                                </small> 
+                                                <i class="fas fa-trash-alt" style="color: white; float: right; padding-left: 5%;" 
+                                                        *ngIf="type === 'playlist'" (click)="delete(item,i)" >
+                                                </i> &nbsp;
+                                                <i class="fas fa-play" style="color: white; float: right;" 
+                                                    (click)="musicPlayerPageService.openMusicPlayer(uploadSongs, i)">
+                                                </i> &nbsp;
+                                            </h6>
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-grid>
+                            </section>
+                        </div>
+                        <div id="tab17" class="tab">
+                            <section class="playlist-container bottom-padding">
+                                <ion-grid *ngIf="songPairs" style="margin-top:-25px">
+                                    <h5 style="color: white;" *ngIf="songPairs.length > 0 ">Songs:
+                                        <span style="text-align: right; float: right; border-radius: 2px; background-color: #35242F; 
+                                                width: 50px; padding-right:3px;">
+                                            <small style="text-align: right;" (click)="musicPlayerPageService.openMusicPlayer(songPairs, 0)">
+                                                Play all
+                                            </small>
+                                        </span>
+                                    </h5>
+                                    <ion-row style="width: 100%; height: 50px !important;" *ngFor="let item of songPairs; let i = index" 
+                                            [ngStyle]="{'margin-top': i>0 ? '15px' : '0px'}">
+                                        <ion-col col-3 (click)="musicPlayerPageService.openMusicPlayer(songPairs, i)">
+                                            <img src="{{item.imageURL != '' ? item.imageURL : 'assets/imgs/album.jpg'}}" alt="" style="width: 50px; height: 50px;">
+                                        </ion-col>
+                                        <ion-col col-9>
+                                            <h6 style="color: white; position: relative; top: -10px; ">{{item.title}}
+                                                <br>
+                                                <small (click)="musicPlayerPageService.openMusicPlayer(songPairs,i)">
+                                                    {{item.artist[0].value}}
+                                                </small> 
+                                                <i class="fas fa-trash-alt" style="color: white; float: right; padding-left: 5%;" 
+                                                        *ngIf="type === 'playlist'" (click)="delete(item,i)" >
+                                                </i> &nbsp;
+                                                <i class="fas fa-play" style="color: white; float: right;" 
+                                                    (click)="musicPlayerPageService.openMusicPlayer(songPairs, i)">
+                                                </i> &nbsp;
+                                            </h6>
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-grid>
+                            </section>    
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</ion-content>
+<ion-footer> 
+    <player-footer></player-footer>
+</ion-footer>

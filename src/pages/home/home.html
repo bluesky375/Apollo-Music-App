@@ -1,0 +1,74 @@
+
+<ion-content>
+    <div class="container">
+        <div class="wrapper">
+            <!-- Panels overlay-->
+            <div class="panel-overlay"></div>
+                <!-- Your main view, should have "view-main" class -->
+                <div class="view view-main">
+                    <section id="status-bar"></section>
+                    <!-- end ios-status-bar -->
+                    <div class="pages">
+                        <div id="browse-1" data-page="browse-1" class="page browse browse-1 nope">
+                            <!-- Scrollable page content -->
+                            <div class="scrollable-content">
+                                <div class="dominant-color dominant-color-1"></div>
+                                <section class="headers" style="width:180px" header-type="standard" header-style="style1" 
+                                        header-icon-style="user" header-title-style="left">
+                                    <header>
+                                        <div class="main-grids safe-area">
+                                            <div class="inner">
+                                                <ion-buttons left style="border: none;">
+                                                    <button ion-button icon-only menuToggle style="color: white; font-size: 20px !important; 
+                                                            position: fixed; top: 20%; border: none;">
+                                                        <i class="fas fa-bars"></i>
+                                                    </button>
+                                                </ion-buttons>
+                                                <h2 style="margin-left: 30px">Browse</h2>
+                                                <button (click)="openSearch()" class="search-icon" essential-search="hide"></button>
+                                            </div>
+                                        </div>
+                                    </header>
+                                </section>
+                                <section class="playlist-container bottom-padding">
+                                    <featured></featured>
+                                    <br>
+                                    <most-played></most-played>
+                                    <br>
+                                    <!-- <recommended></recommended>
+                                    <br> -->
+                                    <originals></originals>
+                                    <br>
+                                    <recently-played></recently-played>
+                                    <br>
+                                    <public-playlist></public-playlist>
+                                    <br>
+                                    <popular-videos></popular-videos>
+                                    <br>
+                                    <!-- <favorite-artists *ngIf="type === 'user'"></favorite-artists>
+                                    <br> -->
+                                    <best-playlists [isLibrary]="false"></best-playlists>
+<!--                                     <br>
+                                    <popular-albums *ngIf="type === 'user' "></popular-albums>
+ -->                                <!-- <charts></charts> -->
+                                </section>
+                            <!-- end bottom padding -->
+                            </div>
+                        <!-- end scrollable content -->
+                        </div>
+                    <!-- end data-index -->
+                    </div>
+                <!-- end pages -->
+    
+            <!-- <mini-video-player></mini-video-player> -->
+            </div>
+        <!-- view.view-main -->
+        </div>
+    <!-- wrapper -->
+    </div>
+<!-- container -->
+</ion-content>
+<ion-footer> 
+    <player-footer></player-footer>
+    <offline-footer></offline-footer>
+</ion-footer>

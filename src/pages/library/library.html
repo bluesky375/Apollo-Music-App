@@ -1,0 +1,138 @@
+<ion-content>
+  <div
+    id="profile-1"
+    data-page="profile"
+    class="page nope profile profile-1 special-scroll page-on-center"
+  >
+    <div class="album-cover-blur">
+      <img
+        src="{{user?.imageURL || 'assets/images/library/profile picture.jpg'}}"
+        class="album cover"
+        width="100%"
+        height="100%"
+        (tap)="choosePicture()"
+      />
+    </div>
+
+    <section
+      class="headers"
+      header-type="back"
+      header-style="style3"
+      header-icon-style="user"
+    >
+      <header>
+        <div class="main-grids safe-area">
+          <div class="inner">
+            <a class="link back" style="opacity: 0"><button class="back-icon"></button></a>
+
+            <div class="album-cover">
+              <img
+              src="{{user?.imageURL || 'assets/images/library/profile picture.jpg'}}"
+                class="album cover"
+                width="100%"
+                height="100%"
+                (tap)="choosePicture()"
+
+              />
+            </div>
+
+            <div class="title-author"><h2 class="title">{{user?.name}}</h2></div>
+          </div>
+        </div>
+      </header>
+    </section>
+
+    <div class="scrollable-content" style="opacity: 1">
+      <div class="special-scroll-tab active bottom-padding">
+        <section class="profile-avatar-user">
+          <div class="main-grids safe-area">
+            <div class="inner">
+              <img
+              src="{{user?.imageURL || 'assets/images/library/profile picture.jpg'}}"
+                width="100%"
+                height="auto"
+                (tap)="choosePicture()"
+
+              />
+
+              <div class="user-country">
+                <cite class="user">{{user?.name}}</cite>
+                <p class="country">{{user?.type === 'user' ? user?.city : user?.country}}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="profile-follow-info">
+          <div class="main-grids safe-area">
+            <div class="inner">
+              <div class="followers">
+                <p class="number">{{ nFollowers || 0 }}</p>
+                <p>Followers</p>
+              </div>
+
+              <div class="following" *ngIf="type === 'user'">
+                <p class="number">{{ nfollowing || 0 }}</p>
+                <p>Following</p>
+              </div>
+
+              <div class="following" *ngIf="type === 'artist'">
+                <p class="number">{{ ntracks || 0 }}</p>
+                <p>No. of Tracks</p>
+              </div>
+
+              <button style="    position: absolute;
+              top: 8px;
+              right: 0;
+              margin: 0 auto;
+              padding: 0;
+              width: 112px;
+              height: 33px;
+               font-weight: 500;
+              letter-spacing: .4px;
+              color: #fff;
+              text-transform: uppercase;
+              border-radius: 10px;
+             font-size: 12px;
+              background: rgba(138, 127, 135, .08);
+              background-image: initial;
+              background-position-x: initial;
+              background-position-y: initial;
+              background-size: initial;
+              background-repeat-x: initial;
+              background-repeat-y: initial;
+              background-attachment: initial;
+              background-origin: initial;
+              background-clip: initial;
+              background-color: rgba(138, 127, 135, 0.08);
+              transition: all .3s ease-in-out;" *ngIf="type === 'artist'" (click)="uploadSong()" >Upload</button>
+              <br>
+              <br>
+              <div class="followers" *ngIf="type === 'artist'">
+                <p class="number">{{ views || 0 }}</p>
+                <p>Views</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <my-albums *ngIf="type === 'artist' "></my-albums>
+
+        <offline-songs></offline-songs>
+
+        <!-- <best-playlists [isLibrary]="true"></best-playlists> -->
+
+        <!-- <library-favorites></library-favorites> -->
+
+        <recently-played></recently-played>
+
+        <!-- <mini-video-player></mini-video-player> -->
+        
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer> <player-footer></player-footer>
+  <offline-footer></offline-footer>
+</ion-footer>

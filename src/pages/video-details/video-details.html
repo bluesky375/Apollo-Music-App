@@ -1,0 +1,310 @@
+<section class="player-video-min player-attribute general big big-active">
+  <div
+    class="videojs song"
+    classname="videojs"
+    id=""
+    width="100%"
+    height="auto"
+  >
+    <div *ngIf="showHeader">
+      <button class="close-video-player" (click)="modalService.dismiss()">
+        <svg width="18" height="18" viewBox="0 0 18 18">
+          <g fill="none" fill-rule="evenodd">
+            <path d="M-6-5h28v28H-6z"></path>
+            <path
+              fill="#FFF"
+              d="M11.547 9.219l4.95-4.95a2 2 0 1 0-2.829-2.829l-4.95 4.95-4.95-4.95A2 2 0 1 0 .94 4.268l4.95 4.95-4.95 4.95a2 2 0 1 0 2.83 2.829l4.95-4.95 4.95 4.95a2 2 0 1 0 2.829-2.83l-4.95-4.95z"
+            ></path>
+          </g>
+        </svg>
+      </button>
+    </div>
+
+    <section class="video-wrapper">
+      <div class="video-wrapper-inner">
+        <div
+          id="vjs_video_3"
+          height="264"
+          width="640"
+          class="video-js vjs-tech vsg-player vjs-default-skin vjs-16-9 vjs-paused vjs_video_3-dimensions vjs-controls-enabled vjs-v6 vjs-youtube vjs-youtube-mobile vjs-user-inactive"
+          lang="en-gb"
+          role="region"
+          aria-label="Video Player"
+        >
+          <div>
+            <iframe
+              id="vjs_video_3_Youtube_api"
+              style="width:100%;height:100%;top:0;left:0;position:absolute"
+              class="vjs-tech"
+              frameborder="0"
+              allowfullscreen="1"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              title="YouTube video player"
+              width="640"
+              height="360"
+              [src]="
+                sanitizer.bypassSecurityTrustResourceUrl(
+                  videoService.currentVideo.video
+                )
+              "
+            ></iframe>
+          </div>
+
+          <div class="gradient-top"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="scrubber-command">
+      <div class="video-player-content">
+        <div class="big-player big-player-content">
+          <section class="video-playlist-control-player">
+            <div class="main-grids safe-area">
+              <div class="inner">
+                <div class="playlist-icon">
+                  <a>
+                    <!-- <svg width="26px" height="23px" viewBox="0 0 26 23">
+                      <path
+                        d="M5.963781,5.59628298 L1.9331164,7.84381662 L1.9331164,7.84381662 C1.30604488,8.19347715 0.514247112,7.96859111 0.164586582,7.3415196 C0.0566558886,7.14795968 4.96437974e-16,6.93002106 6.66133815e-16,6.7084032 L0,2.21333593 L2.22044605e-16,2.21333593 C1.34118617e-16,1.49536576 0.582029825,0.91333593 1.3,0.91333593 C1.52161786,0.91333593 1.73955648,0.969991818 1.9331164,1.07792251 L5.963781,3.32545615 L5.963781,3.32545615 C6.59085252,3.67511668 6.81573856,4.46691444 6.46607803,5.09398596 C6.34852445,5.3048033 6.17459834,5.4787294 5.963781,5.59628298 Z"
+                        id="path-1"
+                      ></path>
+                      <g
+                        stroke="none"
+                        stroke-width="1"
+                        fill="none"
+                        fill-rule="evenodd"
+                      >
+                        <rect x="0" y="0" width="28" height="28"></rect>
+                        <g
+                          id="shapes"
+                          transform="translate(3.730469, 2.974121)"
+                        >
+                          <rect
+                            fill="#FFFFFF"
+                            x="3"
+                            y="2.97391304"
+                            width="13"
+                            height="3"
+                            rx="1.5"
+                          ></rect>
+                          <rect
+                            fill="#FFFFFF"
+                            x="3"
+                            y="9.91304348"
+                            width="19"
+                            height="3"
+                            rx="1.5"
+                          ></rect>
+                          <rect
+                            fill="#FFFFFF"
+                            x="3"
+                            y="16.8521739"
+                            width="9"
+                            height="3"
+                            rx="1.5"
+                          ></rect>
+                          <use
+                            fill="#FFFFFF"
+                            fill-rule="evenodd"
+                            xlink:href="#path-1"
+                          ></use>
+                          <path
+                            stroke="#1F111C"
+                            stroke-width="3"
+                            d="M6.69429992,6.90637539 L2.66363531,9.15390902 C1.31301974,9.90702401 -0.392390836,9.42265409 -1.14550582,8.07203851 C-1.37797193,7.65514023 -1.5,7.18573398 -1.5,6.7084032 L-1.5,2.21333593 C-1.5,0.66693863 -0.2463973,-0.58666407 1.3,-0.58666407 C1.77733078,-0.58666407 2.24673703,-0.464636003 2.66363531,-0.232169894 L6.69429992,2.01536374 C8.04491549,2.76847873 8.52928542,4.47388931 7.77617043,5.82450488 C7.52297811,6.27857299 7.14836803,6.65318306 6.69429992,6.90637539 Z"
+                          ></path>
+                        </g>
+                      </g>
+                    </svg> -->
+                  </a>
+                </div>
+
+                <div class="now-song"><p>Now</p></div>
+
+                <div class="control-player">
+                  <button class="previous" (click)="previousVideo()">
+                    <svg width="23" height="13" viewBox="0 0 23 13">
+                      <path
+                        fill="#FFF"
+                        fill-rule="evenodd"
+                        d="M10.158 7.447c.741-.448.74-1.175 0-1.622L1.342.492C.6.044 0 .305 0 1.065v11.142c0 .764.602 1.02 1.342.573l8.816-5.333zm12.287-.272c.74-.448.74-1.176 0-1.623L13.628.219c-.74-.448-1.342-.186-1.342.574v11.141c0 .765.603 1.02 1.342.573l8.817-5.332z"
+                      ></path>
+                    </svg>
+                  </button>
+
+                  <button class="next" (click)="nextVideo()">
+                    <svg width="23" height="13" viewBox="0 0 23 13">
+                      <path
+                        fill="#FFF"
+                        fill-rule="evenodd"
+                        d="M10.158 7.447c.741-.448.74-1.175 0-1.622L1.342.492C.6.044 0 .305 0 1.065v11.142c0 .764.602 1.02 1.342.573l8.816-5.333zm12.287-.272c.74-.448.74-1.176 0-1.623L13.628.219c-.74-.448-1.342-.186-1.342.574v11.141c0 .765.603 1.02 1.342.573l8.817-5.332z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="player-video-description">
+            <div class="main-grids safe-area">
+              <div class="inner">
+                <div class="title-author">
+                  <h2 class="title">{{ videoService.currentVideo.title }}</h2>
+                  <cite class="author">{{
+                    videoService.currentVideo.oartist
+                  }}</cite>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="player-video-footer">
+            <div class="main-grids safe-area">
+              <div class="inner">
+                <div class="divider"></div>
+
+                <div class="video-visual">
+                  <svg width="23" height="17" viewBox="0 0 23 17">
+                    <path
+                      fill="#FFF"
+                      fill-rule="evenodd"
+                      d="M11.32 16.774c7.204 0 11.32-7.19 11.32-8.387C22.64 7.189 18.524 0 11.32 0 4.116 0 0 7.189 0 8.387c0 1.198 4.116 8.387 11.32 8.387zm0-4.547c2.273 0 4.116-1.718 4.116-3.838s-1.843-3.838-4.116-3.838c-2.273 0-4.116 1.718-4.116 3.838s1.843 3.838 4.116 3.838z"
+                    ></path>
+                  </svg>
+
+                  <p>{{ videoService.currentVideo?.views }}</p>
+                </div>
+
+                <div class="video-like like-container">
+                    <i class="fa fa-heart-o" *ngIf="!isLiked" aria-hidden="true" style="color:white; font-size: 1.8em; 
+                    " (click)="likeSong('like')"></i>
+                    <i class="fa fa-heart" *ngIf="isLiked" aria-hidden="true" style="color:#00ACFF; font-size: 1.8em; 
+                    " (click)="likeSong('dislike')" ></i>
+                </div>
+
+                <div class="video-add-to video-add-to-share-button" (click)="options()" >
+                  <svg width="21" height="22" viewBox="0 0 21 22">
+                    <g fill="none" fill-rule="evenodd">
+                      <path d="M-34-23h87v84h-87z"></path>
+                      <path
+                        fill="#FFF"
+                        d="M8.689 8.307V2.57a1.856 1.856 0 0 1 3.712 0v5.737a1 1 0 0 0 1 1h5.032a1.853 1.853 0 1 1 0 3.706H13.4a1 1 0 0 0-1 1v5.769a1.856 1.856 0 1 1-3.712 0v-5.77a1 1 0 0 0-1-1H2.71a1.853 1.853 0 0 1 0-3.706h4.979a1 1 0 0 0 1-1z"
+                      ></path>
+                    </g>
+                  </svg>
+
+                  <p>Add To</p>
+                </div>
+
+                <div class="divider"></div>
+              </div>
+            </div>
+          </section>
+
+          <br />
+
+          <section
+            class="section-titles"
+            section-type="standard"
+            see-all-style="no_see-all"
+            section-icon-style="video_1_white"
+            section-title-style="left"
+          >
+            <header>
+              <div class="main-grids safe-area">
+                <div class="inner">
+                  <div class="icon"></div>
+                  <h2>Related</h2>
+                </div>
+              </div>
+            </header>
+          </section>
+
+          <section class="vertical-playlist-video">
+            <div class="main-grids safe-area">
+              <div class="inner">
+                <div *ngFor="let video of relatedVideos" class="the-video" (click)="changeVideo(video)">
+                  <div>
+                    <div class="video-container">
+                      <div class="video-avatar">
+                        <img
+                          alt="avatar"
+                          src="{{ video.imageURL || 'assets/imgs/album.jpg' }}"
+                          class="avatar"
+                          width="100%"
+                          height="100%"
+                        />
+
+                        <div class="like-container">
+                          <span
+                            class="heart-icon"
+                            [class.active]="video.isLiked"
+                            ><svg
+                              width="17px"
+                              height="15px"
+                              viewBox="0 0 17 15"
+                            >
+                              <g
+                                stroke="none"
+                                stroke-width="1"
+                                fill="none"
+                                fill-rule="evenodd"
+                              >
+                                <g
+                                  transform="translate(-7.000000, -9.000000)"
+                                  fill="#8A7F87"
+                                >
+                                  <g>
+                                    <path
+                                      d="M15.4200001,12.3674936 C16.2709429,10.2381896 17.615006,9 19.1037501,9 C21.7197286,9 23.8400002,11.3731073 23.8400002,14.3006408 C23.8400002,20.3635207 15.4200001,23.8417942 15.4200001,23.8417942 C15.4200001,23.8417942 7,20.3635207 7,14.3006408 C7,11.3731073 9.12027159,9 11.73625,9 C13.2249941,9 14.5685344,10.1493509 15.4200001,12.3674936 Z"
+                                    ></path>
+                                  </g>
+                                </g>
+                              </g></svg></span>
+                        </div>
+
+                        <div class="video-time-label">
+                          <div class="blur"></div>
+                          <p class="video-time">{{ video.duration }}</p>
+                        </div>
+                      </div>
+
+                      <div class="video-info">
+                        <h2 class="title">{{ video.title }}</h2>
+
+                        <cite class="author">{{ video.oartist }}</cite>
+
+                        <p class="video-views">
+                          <svg width="17" height="14" viewBox="0 0 17 14">
+                            <path
+                              fill="#FFF"
+                              fill-rule="evenodd"
+                              d="M8.502 13.29c5.294 0 8.32-5.667 8.32-6.611 0-.945-3.026-6.611-8.32-6.611-5.295 0-8.32 5.666-8.32 6.61 0 .945 3.025 6.612 8.32 6.612zm0-3.584a3.025 3.025 0 1 0 0-6.05 3.025 3.025 0 0 0 0 6.05z"
+                              opacity=".42"
+                            ></path>
+                          </svg>
+
+                          {{ video?.viewsCount }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div class="vertical-playlist-container">
+            <div class="main-grids safe-area">
+              <!-- <div class="inner">
+                <button class="vertical-playlist-button">Load More</button>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end videojs song -->
+</section>

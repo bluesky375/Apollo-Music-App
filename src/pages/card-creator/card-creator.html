@@ -1,0 +1,97 @@
+<ion-content style="background-color: black">
+  <div
+    class="options-container-overlay fromBottomToTop purchase-popup-overlay edit-card-overlay open"
+  >
+    <section class="header-edit-card">
+      <div class="main-grids safe-area">
+        <div class="inner">
+          <div class="header-edit-card-title">
+            ><span class="selected-card">Add New Card</span>
+          </div>
+
+          <button (click)="modalService.dismiss()" class="close">
+            <svg width="13px" height="13px" viewBox="0 0 16 17">
+              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g transform="translate(-7.000000, -6.000000)">
+                  <rect x="0" y="0" width="28" height="28"></rect>
+                  <path
+                    d="M16.9953742,14.5024854 L22.3097444,9.18811519 C22.8600654,8.63779413 22.8600654,7.74554742 22.3097444,7.19522637 C21.7594233,6.64490532 20.8671766,6.64490532 20.3168556,7.19522637 L20.3168556,7.19522637 L15.0024854,12.5095966 L9.68811519,7.19522637 L9.68811519,7.19522637 C9.13779413,6.64490532 8.24554742,6.64490532 7.69522637,7.19522637 C7.14490532,7.74554742 7.14490532,8.63779413 7.69522637,9.18811519 L13.0095966,14.5024854 L7.69522637,19.8168556 C7.14490532,20.3671766 7.14490532,21.2594233 7.69522637,21.8097444 L7.69522637,21.8097444 C8.24554742,22.3600654 9.13779413,22.3600654 9.68811519,21.8097444 L9.68811519,21.8097444 L15.0024854,16.4953742 L20.3168556,21.8097444 L20.3168556,21.8097444 C20.8671766,22.3600654 21.7594233,22.3600654 22.3097444,21.8097444 L22.3097444,21.8097444 C22.8600654,21.2594233 22.8600654,20.3671766 22.3097444,19.8168556 L16.9953742,14.5024854 Z"
+                    fill="#120810"
+                  ></path>
+                </g>
+              </g>
+            </svg>
+          </button>
+
+          <p>Tap on the card to edit your card's information<br /></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pay-form-container active new-card" card-type="unknown">
+      <div class="main-grids safe-area">
+        <div class="inner">
+          <form action="">
+            <div (click)="addCard()" class="card-done">Done</div>
+
+            <div class="card-logo"></div>
+
+            <div class="card-input-contain">
+              <div class="input card-number">
+                <input
+                  type="tel"
+                  autocomplete="cc-number"
+                  id="cc-number"
+                  ccNum
+                  maxlength="19"
+                  name="ccNumber"
+                  [(ngModel)]="ccNumber"
+                />
+              </div>
+
+              <div class="input name-card">
+                <p>Holder</p>
+                <input
+                  placeholder="Your Name"
+                  type="text"
+                  name="holder"
+                  [(ngModel)]="holder"
+                />
+              </div>
+
+              <div class="input exp-date">
+                <p>Expires</p>
+
+                <input
+                  type="tel"
+                  placeholder="00/00"
+                  ccExp
+                  autocomplete="cc-exp"
+                  id="cc-exp"
+                  maxlength="7"
+                  name="expiryDate"
+                  [(ngModel)]="expiryDate"
+                />
+              </div>
+
+              <div class="input cvv">
+                <p>Cvv</p>
+
+                <input
+                  type="tel"
+                  placeholder="000"
+                  autocomplete="cc-cvc"
+                  id="cc-csc"
+                  ccCvc
+                  maxlength="3"
+                  name="ccv"
+                  [(ngModel)]="ccv"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+</ion-content>

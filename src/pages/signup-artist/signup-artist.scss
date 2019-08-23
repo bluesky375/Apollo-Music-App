@@ -1,0 +1,25 @@
+page-signup-artist {
+
+}
+
+ion-checkbox
+{
+    .item.item-md .checkbox-md 
+    {
+        position: static;
+        display: block;
+        margin: 9px 10px 9px 4px;
+    }    
+}
+
+.icon-input {
+    display: flex;
+    align-items: flex-end;
+    position: absolute;
+    padding-right: 10px;
+    bottom: 0;
+    font-size: 18px;
+    min-width: 0 !important;
+    text-align: left !important;
+    color: #00b1ff;
+}
